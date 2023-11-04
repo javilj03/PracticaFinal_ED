@@ -7,34 +7,26 @@
 
 using namespace std;
 
-void imagen::asignarMemoria(int filas, int columnas, unsigned char* buffer) {
-    this->filas = filas;
+void imagen::asignarMemoria(int filas, int columnas) {
     this->columnas = columnas;
-
-    this->datos = new rgb*[filas];
-    if (buffer != nullptr) {
-        for (int i = 0; i < filas; i++) {
-            this->datos[i] = new rgb[columnas];
-            for (int j = 0; j < columnas; j++) {
-                int index = (i * columnas + j) * 3;
-                this->datos[i][j].Red() = buffer[index];
-                this->datos[i][j].Green() = buffer[index + 1];
-                this->datos[i][j].Blue() = buffer[index + 2];
-            }
-        }
-    } else {
-        for (int i = 0; i < filas; i++) {
-            this->datos[i] = new rgb[columnas];
-        }
-    }
+    this->filas = filas;
+    this->datos = new rgb *[filas];
+    this->datos[0] = new rgb[filas * columnas];
+    for (int i = 1; i < filas; i++)
+        this->datos[i] = this->datos[i - 1] + columnas;
 }
 
 void imagen::liberar() {
-    if (datos != nullptr) {
-        for (int i = 0; i < filas; i++) {
-            delete[] datos[i];
-        }
-        delete[] datos;
+    if (this->datos != nullptr) {
+        delete[] this->datos[0];
+        delete[] this->datos;
+        this->datos = nullptr;
+    }
+    if (this->datos_mascara != nullptr) {
+        for (int i = 0; i < this->filas_mascara; i++)
+            delete[] this->datos_mascara[i];
+        delete[] this->datos_mascara;
+        this->datos_mascara = nullptr;
     }
 }
 
@@ -57,7 +49,7 @@ imagen::imagen(int filas, int columnas, int max) {
 imagen::imagen(const imagen &im) {
     this->copiar(im);
 }
-imagen::imagen(const char *nombre, string nombre_mascara) {
+imagen::imagen(const char *nombre, const char *nombre_mascara) {
     this->LeerImagen(nombre, nombre_mascara);
 }
 imagen::~imagen() {
@@ -108,14 +100,12 @@ rgb *imagen::operator[](int i) {
     return this->at(i);
 }
 
-void imagen::LeerImagen(const char *nombre, string nombre_mascara) {
+void imagen::LeerImagen(const char *nombre, const char *nombre_mascara) {
     //this->liberar();
     LeerTipoImagen(nombre, this->filas, this->columnas);
-    unsigned char buffer[this->filas * this->columnas * 3];
-    LeerImagenPPM(nombre, this->filas, this->columnas, buffer);
-    this->asignarMemoria(this->filas, this->columnas, buffer);
-    if(nombre_mascara != "" && LeerTipoImagen(nombre_mascara.c_str(), this->filas, this->columnas) == IMG_PGM)
-        LeerImagenPGM(nombre_mascara.c_str(), this->filas_mascara, this->columnas_mascara, this->datos_mascara[0]);
+    LeerImagenPPM(nombre, this->filas,this->columnas, reinterpret_cast<unsigned char *>(this->datos));
+    if(nombre_mascara != "" && LeerTipoImagen(nombre_mascara, this->filas, this->columnas) == IMG_PGM)
+        LeerImagenPGM(nombre_mascara, this->filas_mascara, this->columnas_mascara, this->datos_mascara[0]);
 }
 
 void imagen::EscribirImagen(const char *nombre) {

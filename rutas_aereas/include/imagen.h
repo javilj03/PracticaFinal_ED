@@ -28,18 +28,18 @@ private:
 
     void copiar(const imagen& im);
     void liberar();
-    void asignarMemoria(int filas, int columnas, unsigned char* buffer = nullptr);
+    void asignarMemoria(int filas, int columnas);
 public:
-    imagen(int filas = 0, int columnas = 0, int max = 0);
+    imagen(int filas = 0, int columnas = 0, int max = 255);
     imagen(const imagen& im);
-    imagen(const char nombre[], std::string nombre_mascara = "");
+    imagen(const char nombre[], const char *nombre_mascara = "");
     ~imagen();
     imagen& operator=(const imagen& im);
 
     const int &Filas() const;
     const int &Columnas() const;
 
-    void LeerImagen(const char nombre[], std::string nombre_mascara = "");
+    void LeerImagen(const char nombre[], const char *nombre_mascara = "");
     void EscribirImagen(const char nombre[]);
     void PutImagen(const imagen& im, int i, int j, Tipo_Pegado tipo);
 
