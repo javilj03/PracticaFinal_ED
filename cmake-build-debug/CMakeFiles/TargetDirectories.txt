@@ -1,0 +1,6 @@
+/home/lamadindon/Documentos/ObsidianVaultEstudios/Universidad/2/PrimerCuatri/ED/Practicas/PracticaFinal_ED/cmake-build-debug/CMakeFiles/image.dir
+/home/lamadindon/Documentos/ObsidianVaultEstudios/Universidad/2/PrimerCuatri/ED/Practicas/PracticaFinal_ED/cmake-build-debug/CMakeFiles/pruebarotacion.dir
+/home/lamadindon/Documentos/ObsidianVaultEstudios/Universidad/2/PrimerCuatri/ED/Practicas/PracticaFinal_ED/cmake-build-debug/CMakeFiles/pruebapegado.dir
+/home/lamadindon/Documentos/ObsidianVaultEstudios/Universidad/2/PrimerCuatri/ED/Practicas/PracticaFinal_ED/cmake-build-debug/CMakeFiles/doc_doxygen.dir
+/home/lamadindon/Documentos/ObsidianVaultEstudios/Universidad/2/PrimerCuatri/ED/Practicas/PracticaFinal_ED/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lamadindon/Documentos/ObsidianVaultEstudios/Universidad/2/PrimerCuatri/ED/Practicas/PracticaFinal_ED/cmake-build-debug/CMakeFiles/rebuild_cache.dir
