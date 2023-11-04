@@ -8,12 +8,11 @@
 
 #include <fstream>
 #include <string>
-#include "imagenES.h"
+#include <imagenES.h>
 using namespace std;
 
 
-TipoImagen LeerTipo(ifstream& f)
-{
+TipoImagen LeerTipo(ifstream& f){
   char c1,c2;
   TipoImagen res= IMG_DESCONOCIDO;
 
@@ -94,7 +93,7 @@ bool LeerImagenPPM (const char nombre[], int& filas, int& columnas, unsigned cha
   bool exito= false;
   filas=0;
   columnas=0;
-  ifstream f(nombre);
+  ifstream f(nombre, std::ios::binary);
   
   if (LeerTipo(f)==IMG_PPM)
     if (LeerCabecera (f, filas, columnas))
@@ -112,7 +111,7 @@ bool LeerImagenPGM (const char nombre[], int& filas, int& columnas, unsigned cha
   bool exito= false;
   filas=0;
   columnas=0;
-  ifstream f(nombre);
+  ifstream f(nombre, std::ios::binary);
   
   if (LeerTipo(f)==IMG_PGM)
     if (LeerCabecera (f, filas, columnas))
