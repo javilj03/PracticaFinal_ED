@@ -7,8 +7,15 @@ set(BASE_FOLDER rutas_aereas)
 include_directories(${BASE_FOLDER}/include)
 
 add_library(image ${BASE_FOLDER}/src/imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp rutas_aereas/src/imagen.cpp
-        rutas_aereas/src/punto.cpp
-        rutas_aereas/include/Punto.h)
+        rutas_aereas/src/Punto.cpp
+        rutas_aereas/include/Punto.h
+        rutas_aereas/include/rgb.h
+        rutas_aereas/src/rgb.cpp)
+
+if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/Tests/imagenES_test.cpp)
+    add_executable(imagenES_test ${BASE_FOLDER}/Tests/imagenES_test.cpp)
+    target_link_libraries(imagenES_test LINK_PUBLIC image)
+endif()
 
 if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/src/pruebarotacion.cpp)
 add_executable(pruebarotacion ${BASE_FOLDER}/src/pruebarotacion.cpp)

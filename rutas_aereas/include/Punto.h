@@ -11,9 +11,11 @@ private:
     double x;
     double y;
 public:
-   Punto(double x, double y);
-   double getY() const;
-   double getX() const;
+    Punto(double x, double y);
+
+    double getY() const;
+
+    double getX() const;
 
 };
 

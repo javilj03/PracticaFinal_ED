@@ -1,7 +1,6 @@
 # Rutas aereas
 
 ## Ivan
-- Imagen.cpp (imagen.h)
 - Paises.cpp (paises.h)
 - rotado de imagenes 
 - pegado de imagenes
@@ -11,8 +10,8 @@
 - 
 
 ## DONE
-- punto.cpp
-- 
+- Imagen.cpp (imagen.h)
+- punto.cpp (punto.h)
 
 ## A tener en cuenta
 `` columna=(totalcolumnas /360.0)∗(180+ longitud ) ``
