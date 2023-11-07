@@ -10,6 +10,12 @@ rgb::rgb(unsigned char red, unsigned char green, unsigned char blue) {
     this->blue = blue;
 }
 
+void rgb::set(const unsigned char &red, const unsigned char &green, const unsigned char &blue) {
+    this->Red() = red;
+    this->Green() = green;
+    this->Blue() = blue;
+}
+
 unsigned char &rgb::Red() {
     return red;
 }

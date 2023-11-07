@@ -28,11 +28,11 @@ private:
 
     void copiar(const imagen& im);
     void liberar();
-    void asignarMemoria(int filas, int columnas);
+    void asignarMemoria(int filas, int columnas, rgb* buffer = nullptr);
 public:
     imagen(int filas = 0, int columnas = 0, int max = 255);
     imagen(const imagen& im);
-    imagen(const char nombre[], const char *nombre_mascara = "");
+    imagen(const char nombre[], const char *nombre_mascara = nullptr);
     ~imagen();
     imagen& operator=(const imagen& im);
 

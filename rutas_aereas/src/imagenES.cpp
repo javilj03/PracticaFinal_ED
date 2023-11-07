@@ -33,7 +33,7 @@ TipoImagen LeerTipo(ifstream& f){
 
 TipoImagen LeerTipoImagen(const char nombre[])
 {
-  ifstream f(nombre);
+  ifstream f(nombre, std::ios::binary);
   return LeerTipo(f);
 }
 
@@ -74,7 +74,7 @@ TipoImagen LeerTipoImagen(const char nombre[], int& filas, int& columnas)
 {
   TipoImagen tipo;
   filas=columnas=0;
-  ifstream f(nombre);
+  ifstream f(nombre, std::ios::binary);
 
   tipo=LeerTipo(f);
   if (tipo!=IMG_DESCONOCIDO)
@@ -94,12 +94,14 @@ bool LeerImagenPPM (const char nombre[], int& filas, int& columnas, unsigned cha
   filas=0;
   columnas=0;
   ifstream f(nombre, std::ios::binary);
+
   
   if (LeerTipo(f)==IMG_PPM)
     if (LeerCabecera (f, filas, columnas))
-	if (f.read(reinterpret_cast<char *>(buffer),filas*columnas*3))
-	  exito= true;
-  
+        if (f.read(reinterpret_cast<char *>(buffer), filas * columnas * 3))
+            exito = true;
+
+  f.close();
   return exito;
 }
 
@@ -126,7 +128,7 @@ bool LeerImagenPGM (const char nombre[], int& filas, int& columnas, unsigned cha
 
 bool EscribirImagenPPM (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
-  ofstream f(nombre);
+  ofstream f(nombre, std::ios::binary);
   bool res= true;
   
   if (f) {
@@ -142,7 +144,7 @@ bool EscribirImagenPPM (const char nombre[], const unsigned char datos[], int fi
 
 bool EscribirImagenPGM (const char nombre[], const unsigned char datos[], int filas, int columnas)
 {
-  ofstream f(nombre);
+  ofstream f(nombre, std::ios::binary);
   bool res= true;
   
   if (f) {
