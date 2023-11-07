@@ -11,9 +11,9 @@ rgb::rgb(unsigned char red, unsigned char green, unsigned char blue) {
 }
 
 void rgb::set(const unsigned char &red, const unsigned char &green, const unsigned char &blue) {
-    this->Red() = red;
-    this->Green() = green;
-    this->Blue() = blue;
+    this->red = red;
+    this->green = green;
+    this->blue = blue;
 }
 
 unsigned char &rgb::Red() {
@@ -38,4 +38,20 @@ unsigned char &rgb::Blue() {
 
 const unsigned char &rgb::Blue() const {
     return blue;
+}
+
+rgb rgb::operator+(const rgb &rgb2) const {
+    rgb salida(this->red + rgb2.red, this->green + rgb2.green, this->blue + rgb2.blue);
+    return salida;
+}
+rgb rgb::operator/(const int &n) const {
+    rgb salida(this->red / n, this->green / n, this->blue / n);
+    return salida;
+}
+
+bool rgb::operator==(const int &n) const {
+    return (this->red == n && this->green == n && this->blue == n);
+}
+bool rgb::operator!=(const int &n) const {
+    return (this->red != n || this->green != n || this->blue != n);
 }

@@ -51,10 +51,23 @@ imagen::imagen(const char *nombre, const char *nombre_mascara) {
 }
 
 void imagen::LeerImagen(const char *nombre, const char *nombre_mascara) {
+    int filas_mascara = 0, columnas_mascara = 0;
     LeerTipoImagen(nombre, this->filas, this->columnas);
     unsigned char * buffer = new unsigned char[this->filas * this->columnas * 3];
     LeerImagenPPM(nombre, this->filas, this->columnas,buffer);
     this->asignarMemoria(this->filas, this->columnas, (rgb*)buffer);
+    if(nombre_mascara!= nullptr)
+        if(LeerTipoImagen(nombre_mascara,filas_mascara,columnas_mascara) == TipoImagen::IMG_PGM)
+            if(filas_mascara == this->filas && columnas_mascara == this->columnas) {
+                unsigned char *mascara = new unsigned char[filas_mascara * columnas_mascara];
+                LeerImagenPGM(nombre_mascara, filas_mascara, columnas_mascara, mascara);
+
+                for(int i = 0; i < filas; i++)
+                    for(int j = 0; j < columnas; j++)
+                        if(mascara[i*columnas + j] == 0)
+                            this->datos[i][j].set(0,0,0);
+            }
+
 }
 
 void imagen::EscribirImagen(const char *nombre) {
@@ -106,4 +119,19 @@ rgb *imagen::operator[](int i) {
 
 const rgb *imagen::operator[](int i) const {
     return this->at(i);
+}
+
+void imagen::PutImagen(int i, int j, const imagen &im, Tipo_Pegado tipo) {
+    int cero =0;
+    if (tipo == OPACO) {
+        for (int fila = 0; fila < im.filas && fila < this->filas; fila++)
+            for (int columna = 0; columna < im.columnas && fila < this->columnas; columna++)
+
+                if(im.datos[i+fila][j+columna]!=0)
+                    this->datos[i+fila][j + columna] = im.datos[i+fila][j + columna];
+    } else if (tipo == BLENDING) {
+        for (int fila = 0; fila < im.filas && fila < this->filas; fila++)
+            for (int columna = 0; columna < im.columnas && fila < this->columnas; columna++)
+                this->datos[i+fila][j + columna] = (this->datos[i+fila][j + columna] + im.datos[i+fila][j + columna])/ 2;
+    }
 }

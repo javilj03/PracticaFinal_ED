@@ -27,6 +27,10 @@ public:
     unsigned char &Blue();
 
     const unsigned char &Blue() const;
+    rgb operator+(const rgb& rgb2) const;
+    rgb operator/(const int& n) const;
+    bool operator ==(const int &n) const;
+    bool operator !=(const int &n) const;
 };
 
 

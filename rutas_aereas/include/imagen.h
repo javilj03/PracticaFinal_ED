@@ -41,7 +41,7 @@ public:
 
     void LeerImagen(const char nombre[], const char *nombre_mascara = "");
     void EscribirImagen(const char nombre[]);
-    void PutImagen(const imagen& im, int i, int j, Tipo_Pegado tipo);
+    void PutImagen(int i, int j, const imagen& im, Tipo_Pegado tipo);
 
     const rgb* operator[](int i) const;
     rgb* operator[](int i);
