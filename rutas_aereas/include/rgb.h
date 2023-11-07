@@ -12,7 +12,7 @@ private:
     unsigned char green;
     unsigned char blue;
 public:
-    rgb(unsigned char red = 0, unsigned char green = 0, unsigned char blue = 0);
+    rgb(const unsigned char &red = 0, const unsigned char &green = 0, const unsigned char &blue = 0);
 
     void set(const unsigned char &red, const unsigned char &green, const unsigned char &blue);
 
@@ -27,10 +27,16 @@ public:
     unsigned char &Blue();
 
     const unsigned char &Blue() const;
-    rgb operator+(const rgb& rgb2) const;
-    rgb operator/(const int& n) const;
-    bool operator ==(const int &n) const;
-    bool operator !=(const int &n) const;
+
+    rgb operator+(const rgb &rgb2) const;
+
+    rgb operator/(const int &n) const;
+
+    bool operator==(const int &n) const;
+
+    bool operator!=(const int &n) const;
+
+    rgb media(const rgb &rgb2) const;
 };
 
 
