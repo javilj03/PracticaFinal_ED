@@ -297,7 +297,7 @@ void Imagen::PutImagen(int posi,int posj, const Imagen &I,Tipo_Pegado tippegado)
 
 /*********************************/
 
-#include "imagen.h"
+#include "Imagen.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -351,17 +351,17 @@ void Pintar( int f1,int f2,int c1,int c2,Imagen &I, const Imagen &avion,int mind
 }  
   
 /** 
- * @brief Obtiene una nueva imagen que es la versión rotada de una imagen de entrada
- * @param Io: imagen de entrada
- * @param angulo: angulo a rotar la imagen de entrada. Debe estar en radianes.
- * @return Una nueva imagen que es la versión rotada de Io.
+ * @brief Obtiene una nueva Imagen que es la versión rotada de una Imagen de entrada
+ * @param Io: Imagen de entrada
+ * @param angulo: angulo a rotar la Imagen de entrada. Debe estar en radianes.
+ * @return Una nueva Imagen que es la versión rotada de Io.
  * */
 
 Imagen Rota(const Imagen & Io,double angulo){
     double rads=angulo;
     double coseno = cos(angulo);
     double seno = sin(angulo);
-    //Para obtener las dimensiones de la imagen
+    //Para obtener las dimensiones de la Imagen
     int rcorners[4],ccorners[4];
     int newimgrows,newimgcols;
     double new_row_min,new_col_min,new_row_max,new_col_max;
@@ -430,11 +430,11 @@ int main(int argc, char * argv[]){
   if (argc!=7){
       cout<<"Los parametros son:"<<endl;
       cout<<"1.-Fichero con la informacion de los paises"<<endl;
-      cout<<"2.-Nombre de la imagen con el mapa del mundo"<<endl;
+      cout<<"2.-Nombre de la Imagen con el mapa del mundo"<<endl;
       cout<<"3.-Directorio con las banderas"<<endl;
       cout<<"4.-Fichero con el almacen de rutas"<<endl;
-      cout<<"5.- Nombre de la imagen con el avion"<<endl;
-      cout<<"6.- Nombre de la imagen de la mascara del avion"<<endl;
+      cout<<"5.- Nombre de la Imagen con el avion"<<endl;
+      cout<<"6.- Nombre de la Imagen de la mascara del avion"<<endl;
       
       return 0;
   }    

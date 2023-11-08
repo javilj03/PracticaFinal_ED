@@ -1,7 +1,7 @@
 //
 // Created by ivanf on 04/11/2023.
 //
-#include <imagen.h>
+#include <Imagen.h>
 #include <iostream>
 #include <chrono>
 
@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
         cerr << "Uso: " << argv[0] << " <FichImagenOriginal> <FichImagenDestino>\n";
         exit(1);
     }
-    imagen im(argv[1]);
+    Imagen im(argv[1]);
     im.EscribirImagen(argv[2]);
 
     auto end_time = std::chrono::high_resolution_clock::now();

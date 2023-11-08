@@ -1,14 +1,11 @@
-/**
-  * @file imagenES.cpp
-  * @brief Fichero con definiciones para la E/S de imágenes
-  *
-  * Permite la E/S de archivos de tipo PGM,PPM
-  *
-  */
-
 #include <fstream>
 #include <string>
 #include <imagenES.h>
+
+/**
+  * @file imagenES.cpp
+  * @brief Fichero con definiciones para la E/S de imágenes. Permite la E/S de archivos de tipo PGM,PPM.
+  */
 
 using namespace std;
 

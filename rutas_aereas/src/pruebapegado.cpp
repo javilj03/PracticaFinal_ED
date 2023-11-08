@@ -1,8 +1,13 @@
-#include "imagen.h"
+#include "Imagen.h"
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
 #include <chrono>
+
+/**
+ * @file pruebapegado.cpp
+ * @brief Programa para pegar una imagen en otra.
+ */
 
 using namespace std;
 
@@ -13,16 +18,16 @@ int main(int argc, char *argv[]) {
     while (la > 0) {
         if (argc != 8) {
             cout << "Los parametros son :" << endl;
-            cout << "1.-La imagen de fondo" << endl;
-            cout << "2.-La imagen a pegar" << endl;
-            cout << "3.-La máscara de la imagen a pegar" << endl;
-            cout << "4.-El nombre de la imagen de salida" << endl;
+            cout << "1.-La Imagen de fondo" << endl;
+            cout << "2.-La Imagen a pegar" << endl;
+            cout << "3.-La máscara de la Imagen a pegar" << endl;
+            cout << "4.-El nombre de la Imagen de salida" << endl;
             cout << "5.-La fila donde pegar" << endl;
             cout << "6.-La columna donde pegar" << endl;
             cout << "7.- 0: Pegado Opaco 1: Pegado Blending" << endl;
             return 0;
         }
-        imagen I, Ip;
+        Imagen I, Ip;
         I.LeerImagen(argv[1]);
         Ip.LeerImagen(argv[2], argv[3]);
         int i, j;
