@@ -1,9 +1,11 @@
-//
-// Created by lamadindon on 4/11/23.
-//
-
 #include "Punto.h"
 
+/**
+ * @file Punto.cpp
+ * @brief Implementación de la clase Punto.
+ * @author Iván Rodríguez Chacón
+ * @author Javier Lama Jiménez
+ */
 Punto::Punto(double x, double y) {
     this->x = x;
     this->y = y;
@@ -15,4 +17,10 @@ double Punto::getX() const {
 
 double Punto::getY() const {
     return y;
+}
+
+Punto coordenadas_aPunto(const double &latitud, const double &longitud, int totalfilas, int totalcolumnas) {
+    double columna = (totalcolumnas / 360.0) * (180 + longitud);
+    double fila = (totalfilas / 180.0) * (90 - latitud);
+    return Punto(fila, columna);
 }
