@@ -1,6 +1,6 @@
 #ifndef PRACTICAFINAL_PUNTO_H
 #define PRACTICAFINAL_PUNTO_H
-
+using namespace std;
 /**
  * @file Punto.h
  * @brief Cabecera de la clase Punto.
@@ -39,6 +39,7 @@ public:
      */
     double getX() const;
 
+    friend bool operator==(const Punto& punto1, const Punto& punto2);
 };
 /**
  * @brief Función que pasa una latitud y una longitud a un punto de la imagen.
