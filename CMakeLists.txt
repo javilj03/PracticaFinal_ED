@@ -6,7 +6,7 @@ set(BASE_FOLDER rutas_aereas)
 
 include_directories(${BASE_FOLDER}/include)
 
-add_library(image ${BASE_FOLDER}/src/Imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp ${BASE_FOLDER}/src/Punto.cpp ${BASE_FOLDER}/src/Pixel.cpp ${BASE_FOLDER}/src/Pais.cpp ${BASE_FOLDER}/src/Ruta.cpp ${BASE_FOLDER}/src/AlmacenRutas.cpp)
+add_library(image ${BASE_FOLDER}/src/Imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp ${BASE_FOLDER}/src/Punto.cpp ${BASE_FOLDER}/src/Pixel.cpp ${BASE_FOLDER}/src/Pais.cpp ${BASE_FOLDER}/src/Ruta.cpp ${BASE_FOLDER}/src/AlmacenRutas.cpp ${BASE_FOLDER}/src/Paises.cpp)
 
 if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/Tests/imagenES_test.cpp)
     add_executable(imagenES_test ${BASE_FOLDER}/Tests/imagenES_test.cpp)

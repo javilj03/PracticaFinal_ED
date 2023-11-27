@@ -17,7 +17,7 @@
 class Pais {
 private:
     /**
-     * @brief Imagen de la bandera del pais.
+     * @brief Imagen de la bandera del pais. Esta inicializado a null hasta que se necesite la imagen por primera vez.
      */
     Imagen bandera;
     /**

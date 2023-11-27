@@ -32,7 +32,7 @@ private:
      */
     Pixel **datos = nullptr;
     /**
-     * @brief Puntero a puntero de unsigned char que apunta a la máscara de la Imagen (Se trata de una matriz).
+     * @brief Puntero a puntero de unsigned char que apunta a la máscara de la Imagen (Se trata de una matriz). Se pone a parte de los pixeles para ahorrar memoria en caso de que no se use máscara.
      */
     unsigned char **mascara = nullptr;
     /**
@@ -70,7 +70,6 @@ private:
     void LeerMascara(const char nombre[]);
 
 public:
-
     /**
      * @brief Constructor por defecto de la clase.
      * @param filas Filas de la Imagen.

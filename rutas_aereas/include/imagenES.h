@@ -3,8 +3,8 @@
   * @brief Fichero cabecera para la E/S de imágenes. Permite la E/S de archivos de tipos PGM,PPM.
   */
 
-#ifndef _IMAGEN_ES_H_
-#define _IMAGEN_ES_H_
+#ifndef IMAGEN_ES_H_
+#define IMAGEN_ES_H_
 
 /**
   * @brief Tipo de Imagen
@@ -89,6 +89,3 @@ bool LeerImagenPGM(const char nombre[], int &filas, int &columnas, unsigned char
 bool EscribirImagenPGM(const char nombre[], const unsigned char datos[], int f, int c);
 
 #endif
-
-/* Fin Fichero: imagenES.h */
-
