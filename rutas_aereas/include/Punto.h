@@ -1,5 +1,7 @@
 #ifndef PRACTICAFINAL_PUNTO_H
 #define PRACTICAFINAL_PUNTO_H
+#include <fstream>
+
 using namespace std;
 /**
  * @file Punto.h
@@ -38,8 +40,10 @@ public:
      * @return Coordenada y del punto.
      */
     double getX() const;
-
     friend bool operator==(const Punto& punto1, const Punto& punto2);
+
+    friend ostream & operator<<(ostream &os, const Punto &punto);
+    friend istream & operator>>(istream &is, Punto &punto);
 };
 /**
  * @brief Función que pasa una latitud y una longitud a un punto de la imagen.

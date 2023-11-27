@@ -28,3 +28,15 @@ Punto coordenadas_aPunto(const double &latitud, const double &longitud, int tota
     double fila = (totalfilas / 180.0) * (90 - latitud);
     return Punto(fila, columna);
 }
+
+ostream & operator<<(ostream &os, const Punto &punto){
+    os<<"("<<punto.x<<","<<punto.y<<")";
+
+    return os;
+}
+istream & operator>>(istream &is,Punto &punto){
+    char parentesis, coma;
+    is>>parentesis>>punto.x>>coma>>punto.y>>parentesis;
+
+    return is;
+}
