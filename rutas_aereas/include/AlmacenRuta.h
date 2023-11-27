@@ -1,5 +1,5 @@
-#ifndef PRACTICAFINAL_ALMACENRUTAS_H
-#define PRACTICAFINAL_ALMACENRUTAS_H
+#ifndef PRACTICAFINAL_ALMACENRUTA_H
+#define PRACTICAFINAL_ALMACENRUTA_H
 
 #include <map>
 #include "Ruta.h"
@@ -40,6 +40,10 @@ public:
     */
     Ruta getRuta(string nombre);
 
+    friend istream &operator>>(std::istream &is, AlmacenRuta &almacenRuta);
+
+    friend ostream &operator<<(std::ostream &os, const AlmacenRuta &almacenRuta);
+
     class iterator {
     private:
         map<string, Ruta>::iterator it;
@@ -62,7 +66,37 @@ public:
         Ruta &operator*() {return it->second;}
 
         friend class AlmacenRuta;
+        friend class const_iterator;
     };
+    class const_iterator {
+    private:
+        std::map<std::string, Ruta>::const_iterator it;
+
+    public:
+        const_iterator(const std::map<std::string, Ruta>::const_iterator &iterator) : it(iterator) {}
+
+        const_iterator &operator++() {
+           ++it;
+           return *this;
+        }
+
+        const_iterator &operator--() {
+           --it;
+           return *this;
+        }
+
+        bool operator==(const const_iterator &i) const { return i.it == it; }
+
+        bool operator!=(const const_iterator &i) const { return i.it != it; }
+
+        const Ruta &operator*() const { return it->second; }
+
+        const string &getNombreRuta() const { return it->first; }
+        const Ruta &getRuta() const{return it->second;}
+
+        friend class AlmacenRuta;
+    };
+
 
     /**
     * @brief Inicializa un iterator al comienzo de la ruta
@@ -84,9 +118,7 @@ public:
 };
 
 
-istream &operator>>(std::istream &os, Ruta &ruta);
-
-istream &operator<<(std::istream &os, Ruta &ruta);
 
 
-#endif //PRACTICAFINAL_ALMACENRUTAS_H
+
+#endif //PRACTICAFINAL_ALMACENRUTA_H

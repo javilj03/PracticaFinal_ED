@@ -28,7 +28,6 @@ private:
     /**
     * @brief Nombre de la ruta
     */
-    string code;
 public:
     /**
     * @brief Constructor de la clase
@@ -105,12 +104,12 @@ public:
      * @param iterator Objeto punto a eliminar
      */
     void erase(iterator it);
+    friend istream &operator>>(std::istream &is, Ruta &ruta);
+    friend ostream &operator<<(std::ostream &os, const Ruta &ruta);
 };
 
 
-istream &operator>>(std::istream &os, Ruta &ruta);
 
-istream &operator<<(std::istream &os, Ruta &ruta);
 
 
 #endif //PRACTICAFINAL_RUTA_H

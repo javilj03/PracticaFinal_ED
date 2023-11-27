@@ -6,7 +6,7 @@ set(BASE_FOLDER rutas_aereas)
 
 include_directories(${BASE_FOLDER}/include)
 
-add_library(image ${BASE_FOLDER}/src/Imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp ${BASE_FOLDER}/src/Punto.cpp ${BASE_FOLDER}/src/Pixel.cpp ${BASE_FOLDER}/src/Pais.cpp ${BASE_FOLDER}/src/Ruta.cpp ${BASE_FOLDER}/src/AlmacenRutas.cpp)
+add_library(image ${BASE_FOLDER}/src/Imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp ${BASE_FOLDER}/src/Punto.cpp ${BASE_FOLDER}/src/Pixel.cpp ${BASE_FOLDER}/src/Pais.cpp ${BASE_FOLDER}/src/Ruta.cpp ${BASE_FOLDER}/src/AlmacenRuta.cpp)
 
 if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/Tests/imagenES_test.cpp)
     add_executable(imagenES_test ${BASE_FOLDER}/Tests/imagenES_test.cpp)
@@ -22,7 +22,10 @@ if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/src/pruebarotacion.cpp)
 add_executable(pruebarotacion ${BASE_FOLDER}/src/pruebarotacion.cpp)
 target_link_libraries(pruebarotacion LINK_PUBLIC image)
 endif()
-
+if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/src/pruebaAlmacenRuta.cpp)
+    add_executable(pruebaAlmacenRuta ${BASE_FOLDER}/src/pruebaAlmacenRuta.cpp)
+    target_link_libraries(pruebaAlmacenRuta LINK_PUBLIC image)
+endif()
 if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/src/pruebapegado.cpp)
 add_executable(pruebapegado ${BASE_FOLDER}/src/pruebapegado.cpp)
 target_link_libraries(pruebapegado LINK_PUBLIC image)
