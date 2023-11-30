@@ -55,7 +55,7 @@ public:
  * @return Punto de la imagen al que equivalen las coordenadas.
  */
 Punto coordenadas_aPunto(const double &latitud, const double &longitud, int totalfilas, int totalcolumnas);
-
+pair<double,double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas);
 ostream & operator<<(ostream &os, const Punto &punto);
 istream & operator>>(istream &is, Punto &punto);
 

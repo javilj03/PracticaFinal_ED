@@ -79,7 +79,13 @@ std::istream &operator>>(std::istream &is, Pais &pais) {
     std::string nombre, path_bandera;
 
     is >> latitud >> longitud >> nombre >> path_bandera;
-    pais = Pais(nombre.c_str(), Punto(latitud, longitud), path_bandera.c_str());
+    pais = Pais(nombre.c_str(), coordenadas_aPunto(latitud,longitud,768,1536), path_bandera.c_str());
 
     return is;
+}
+
+std::ostream &operator<<(ostream &os, const Pais& pais) {
+    pair<double,double> coordendas=punto_aCoordenadas(pais.Coordenadas(),768,1536);
+    os<<coordendas.first<<" "<<coordendas.second<<" "<<pais.Nombre()<<" "<<pais.PathBandera()<<endl;
+    return os;
 }

@@ -129,5 +129,5 @@ public:
  * @return Referencia al flujo de entrad para poder concatenarlo.
  */
 std::istream &operator>>(std::istream &os, Pais &pais);
-
+std::ostream &operator<<(std::ostream &os, const Pais& pais);
 #endif
