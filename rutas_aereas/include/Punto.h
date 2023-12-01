@@ -4,8 +4,8 @@
 
 using namespace std;
 /**
- * @file Punto.h
- * @brief Cabecera de la clase Punto.
+ * @file getPunto.h
+ * @brief Cabecera de la clase getPunto.
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
  */
@@ -31,7 +31,7 @@ public:
 
     /**
      * @brief Constructor de copia.
-     * @param p Punto a copiar.
+     * @param p getPunto a copiar.
      */
     double getY() const;
 
@@ -54,7 +54,7 @@ public:
  * @param longitud Coordenada longitud.
  * @param totalfilas Total de filas de la imagen.
  * @param totalcolumnas Total de columnas de la imagen.
- * @return Punto de la imagen al que equivalen las punto.
+ * @return getPunto de la imagen al que equivalen las punto.
  */
 Punto coordenadas_aPunto(const double &latitud, const double &longitud, int totalfilas, int totalcolumnas);
 pair<double,double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas);

@@ -99,7 +99,7 @@ class Paises{
 	    it.p=i;
 	    return it;
 	}
-	Iterator find(const Punto &p){
+	Iterator find(const getPunto &p){
 	    .............
 	}
 	friend istream & operator>>(istream & is, Paises & R){

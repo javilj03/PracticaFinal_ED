@@ -2,7 +2,7 @@
 #define PRACTICAFINAL_PAIS_H
 
 #include <Imagen.h>
-#include <Punto.h>
+#include "Punto.h"
 #include <cstring>
 
 
@@ -35,7 +35,7 @@ private:
     pair<double, double> coordenadas = {0, 0};
 
     /**
-     * @brief Punto del pais usando un struct Punto.
+     * @brief Punto del pais usando un struct getPunto.
      */
     Punto punto;
 
@@ -43,7 +43,7 @@ private:
      * @brief Función que asigna los valores de los atributos de la clase.
      * @param nombre Array de carácteres que contiene el nombre del pais.
      * @param path_bandera Array de carácteres que contiene la ruta de la bandera del país.
-     * @param coordenadas Punto que contiene las punto del país.
+     * @param coordenadas getPunto que contiene las punto del país.
      */
     void asignar(const char *nombre, const char *path_bandera, const pair<double, double> &coordenadas);
 
@@ -62,7 +62,7 @@ public:
     /**
      * @brief Constructor por defecto de la clase.
      * @param nombre Nombre del país.
-     * @param coordenadas Punto del país.
+     * @param coordenadas getPunto del país.
      * @param path_bandera Ruta hacia la bandera del país.
      */
     Pais(const char *nombre = nullptr, const pair<double, double> &coordenadas = {0, 0},
@@ -112,15 +112,15 @@ public:
 
     /**
      * @brief Método constante que devuelve el punto del país.
-     * @return Punto del país como una referencia a Punto constante.
+     * @return Punto del país como una referencia a getPunto constante.
      */
-    const Punto &Punto() const;
+    const Punto &getPunto() const;
 
     /**
      * @brief Método que devuelve el punto del país.
      * @return Referencia a las punto del país.
      */
-    class Punto &Punto();
+    Punto &getPunto();
 
     const pair<double, double> &Coordenadas() const;
 

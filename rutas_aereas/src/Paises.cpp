@@ -65,7 +65,7 @@ Pais Paises::Iterator::operator*() const {
 
 ostream &operator<<(ostream &os, const Paises &paises) {
     for (Paises::const_Iterator i = paises.begin(); i != paises.end(); i++)
-        os << std::setprecision(16) << *i << endl;
+        os << std::setprecision(20) << *i << endl;
     return os;
 }
 

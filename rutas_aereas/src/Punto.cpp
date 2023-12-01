@@ -1,8 +1,8 @@
 #include "Punto.h"
 
 /**
- * @file Punto.cpp
- * @brief Implementación de la clase Punto.
+ * @file getPunto.cpp
+ * @brief Implementación de la clase getPunto.
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
  */

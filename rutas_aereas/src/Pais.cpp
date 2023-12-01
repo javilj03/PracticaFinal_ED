@@ -41,11 +41,11 @@ char *Pais::PathBandera() {
     return this->path_bandera;
 }
 
-const Punto &Pais::Punto() const {
+const Punto &Pais::getPunto() const {
     return this->punto;
 }
 
-Punto &Pais::Punto() {
+Punto &Pais::getPunto() {
     if (this->punto.getX() < 0 && this->punto.getY() < 0)
         this->punto = coordenadas_aPunto(this->coordenadas.first, this->coordenadas.second, 768, 1536);
 

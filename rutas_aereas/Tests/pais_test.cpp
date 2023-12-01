@@ -9,8 +9,8 @@ int main() {
     Pais pais;
     cin >> pais;
 
-    cout << pais.Nombre() << endl << pais.Punto().getX() << ", " << pais.Punto().getY() << endl << pais.PathBandera() << endl;
-    Punto salida = coordenadas_aPunto(pais.Punto().getX(), pais.Punto().getY(), 768, 1536);
+    cout << pais.Nombre() << endl << pais.getPunto().getX() << ", " << pais.getPunto().getY() << endl << pais.PathBandera() << endl;
+    Punto salida = coordenadas_aPunto(pais.getPunto().getX(), pais.getPunto().getY(), 768, 1536);
     cout << salida.getX() << ", " << salida.getY() << endl;
 
     return 0;

@@ -54,7 +54,7 @@ public:
 
     /**
     * @brief Obtiene el vector con todos los puntos de la ruta
-    * @return vector<Punto>
+    * @return vector<getPunto>
     */
     vector<Punto> getPuntos();
 
