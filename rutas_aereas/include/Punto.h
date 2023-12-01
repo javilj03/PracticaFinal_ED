@@ -52,7 +52,7 @@ public:
  * @param longitud Coordenada longitud.
  * @param totalfilas Total de filas de la imagen.
  * @param totalcolumnas Total de columnas de la imagen.
- * @return Punto de la imagen al que equivalen las coordenadas.
+ * @return Punto de la imagen al que equivalen las punto.
  */
 Punto coordenadas_aPunto(const double &latitud, const double &longitud, int totalfilas, int totalcolumnas);
 pair<double,double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas);

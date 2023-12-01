@@ -42,8 +42,8 @@ istream & operator>>(istream &is,Punto &punto){
 }
 
 pair<double, double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas) {
-    double latitud = 90 - (punto.getX() / (totalfilas / 180.0));
-    double longitud = (punto.getY() / (totalcolumnas / 360.0)) - 180;
+    double latitud = 90 - (punto.getX() / ((double)totalfilas / 180.0));
+    double longitud = (punto.getY() / ((double)totalcolumnas / 360.0)) - 180;
     return {latitud, longitud};
 }
 

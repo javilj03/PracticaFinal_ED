@@ -1,5 +1,0 @@
-/snap/clion/250/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/ivan/Desktop/ED/PracticaFinal_ED -B /home/ivan/Desktop/ED/PracticaFinal_ED/cmake-build-debug
-Doxygen build started
--- Configuring done (6.7s)
--- Generating done (0.1s)
--- Build files have been written to: /home/ivan/Desktop/ED/PracticaFinal_ED/cmake-build-debug

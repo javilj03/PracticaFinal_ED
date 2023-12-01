@@ -1,8 +1,6 @@
-//
-// Created by ivan on 27/11/23.
-//
 
 #include "Paises.h"
+
 
 using namespace std;
 
@@ -28,12 +26,8 @@ bool Paises::empty() const {
     return this->datos.empty();
 }
 
-bool Paises::insert(const pair<string, Pais>& elemento) {
-    return this->datos.insert(elemento).second;
-}
-
 bool Paises::insert(Pais pais) {
-    return this->datos.emplace(pais.Nombre(),pais).second;
+    return this->datos.insert(pais).second;
 }
 
 Paises::Iterator &Paises::Iterator::operator++() {
@@ -56,17 +50,17 @@ bool Paises::Iterator::operator!=(Paises::Iterator it2) const{
 }
 
 Paises::Iterator::Iterator() {
-    this->iterador = map<string,Pais>::iterator();
+    this->iterador = set<Pais>::iterator();
 }
 
-pair<string, Pais> Paises::Iterator::operator*() {
+Pais Paises::Iterator::operator*() const{
     return *this->iterador;
 }
 
 ostream &operator<<(ostream &os, const Paises &paises) {
     os<<"# Latitud         	Longitud 	      	Pais      	Bandera"<<endl;
     for(Paises::const_Iterator i=paises.begin();i!=paises.end();i++)
-        os<<(*i).second<<endl;
+        os<<std::setprecision(16)<<*i<<endl;
     return os;
 }
 
@@ -83,7 +77,7 @@ istream &operator>>(istream &is, Paises &paises) {
 Paises::Iterator::Iterator(const Paises::Iterator &other){
     this->iterador = other.iterador;
 }
-Paises::Iterator::Iterator(const map<string, Pais>::iterator &it){
+Paises::Iterator::Iterator(const set<Pais>::iterator &it){
     this->iterador = it;
 }
 
@@ -97,7 +91,15 @@ Paises::const_Iterator Paises::end() const {
     return {this->datos.end()};
 }
 
-Paises::const_Iterator::const_Iterator(const map<string, Pais>::const_iterator &it) {
+void Paises::erase(const Pais& pais) {
+    this->datos.erase(pais);
+}
+
+void Paises::erase(const Paises::Iterator &it) {
+    this->erase(*it);
+}
+
+Paises::const_Iterator::const_Iterator(const set<Pais>::const_iterator &it) {
     this->iterador = it;
 }
 
@@ -111,10 +113,28 @@ Paises::const_Iterator &Paises::const_Iterator::operator++(int) {
     return *this;
 }
 
-pair<string, Pais> Paises::const_Iterator::operator*() {
+Pais Paises::const_Iterator::operator*() const {
     return *this->iterador;
 }
 
 bool Paises::const_Iterator::operator!=(Paises::const_Iterator it2) const {
     return this->iterador != it2.iterador;
+}
+
+void Paises::clear() {
+    this->datos.clear();
+}
+
+void Paises::save(const char *fileName) const {
+    ofstream file(fileName);
+    if(!file){
+        cerr<<"Ocurrió un error al abrir el fichero";
+        exit(-1);
+    }
+    if(!file.is_open()){
+        cerr<<"El programa tuvo un problema al intentar leer el fichero";
+        exit(-2);
+    }
+    file<<*this;
+    file.close();
 }

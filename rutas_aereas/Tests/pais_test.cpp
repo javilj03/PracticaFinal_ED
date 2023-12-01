@@ -5,12 +5,12 @@
 using namespace std;
 
 int main() {
-    cout<<"Introduzca el nombre del pais, las coordenadas y el path de la bandera: "<<endl;
+    cout<<"Introduzca el nombre del pais, las punto y el path de la bandera: "<<endl;
     Pais pais;
     cin >> pais;
 
-    cout << pais.Nombre()<<endl<< pais.Coordenadas().getX()<< ", " << pais.Coordenadas().getY()<<endl<<pais.PathBandera() << endl;
-    Punto salida = coordenadas_aPunto(pais.Coordenadas().getX(), pais.Coordenadas().getY(), 768, 1536);
+    cout << pais.Nombre() << endl << pais.Punto().getX() << ", " << pais.Punto().getY() << endl << pais.PathBandera() << endl;
+    Punto salida = coordenadas_aPunto(pais.Punto().getX(), pais.Punto().getY(), 768, 1536);
     cout << salida.getX() << ", " << salida.getY() << endl;
 
     return 0;
