@@ -73,8 +73,10 @@ void Pais::copiar(const Pais &pais) {
 }
 
 void Pais::liberar() {
-    delete[] this->nombre;
-    delete[] this->path_bandera;
+    if(this->nombre!= nullptr)
+        free(this->nombre);
+    if(this->path_bandera!= nullptr)
+        free(this->path_bandera);
 }
 
 bool Pais::operator<(const Pais &pais) const {

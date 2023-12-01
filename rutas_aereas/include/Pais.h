@@ -65,8 +65,8 @@ public:
      * @param coordenadas getPunto del país.
      * @param path_bandera Ruta hacia la bandera del país.
      */
-    Pais(const char *nombre = nullptr, const pair<double, double> &coordenadas = {0, 0},
-         const char *path_bandera = nullptr);
+    Pais(const char *nombre = "", const pair<double, double> &coordenadas = {0, 0},
+         const char *path_bandera = "");
 
     /**
      * @brief Constructor de copia de la clase.

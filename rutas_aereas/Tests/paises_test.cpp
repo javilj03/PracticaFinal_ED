@@ -12,7 +12,6 @@ int main(int argc, char *argv[]) {
     //std::cout << std::fixed << std::setprecision(15);
     Paises conjunto(argv[1]);
     cout<<conjunto<<endl;
-    cout<<(string("Angola")<string("Alemania"))<<endl;
     conjunto.save(argv[2]);
     return 0;
 }
