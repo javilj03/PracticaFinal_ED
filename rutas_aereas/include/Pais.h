@@ -5,6 +5,7 @@
 #include <Punto.h>
 #include <cstring>
 
+
 /**
  * @file Pais.h Cabecera de la clase Pais
  * @brief Cabecera de la clase Pais.
@@ -17,7 +18,7 @@
 class Pais {
 private:
     /**
-     * @brief Imagen de la bandera del pais.
+     * @brief Imagen de la bandera del pais. Esta inicializado a null hasta que se necesite la imagen por primera vez.
      */
     Imagen bandera;
     /**
@@ -28,18 +29,21 @@ private:
      * @brief Ruta en el equipo de la bandera del pais como un array de carácteres.
      */
     char *path_bandera;
+
+    pair<double,double> coordenadas = {0,0};
+
     /**
-     * @brief Coordenadas del pais usando un struct Punto.
+     * @brief Punto del pais usando un struct Punto.
      */
-    Punto coordenadas;
+    Punto punto;
 
     /**
      * @brief Función que asigna los valores de los atributos de la clase.
      * @param nombre Array de carácteres que contiene el nombre del pais.
      * @param path_bandera Array de carácteres que contiene la ruta de la bandera del país.
-     * @param coordenadas Punto que contiene las coordenadas del país.
+     * @param coordenadas Punto que contiene las punto del país.
      */
-    void asignar(const char *nombre, const char *path_bandera, const Punto &coordenadas);
+    void asignar(const char *nombre, const char *path_bandera, const pair<double,double> &coordenadas);
 
     /**
      * @brief Función que copia los valores de los atributos de un objeto de la clase en otro de la misma clase.
@@ -56,10 +60,10 @@ public:
     /**
      * @brief Constructor por defecto de la clase.
      * @param nombre Nombre del país.
-     * @param coordenadas Coordenadas del país.
+     * @param coordenadas Punto del país.
      * @param path_bandera Ruta hacia la bandera del país.
      */
-    Pais(const char *nombre = nullptr, const Punto &coordenadas = Punto(0,0), const char *path_bandera = nullptr);
+    Pais(const char *nombre = nullptr, const pair<double,double> &coordenadas ={0,0}, const char *path_bandera = nullptr);
 
     /**
      * @brief Constructor de copia de la clase.
@@ -104,23 +108,28 @@ public:
     char *PathBandera();
 
     /**
-     * @brief Método constante que devuelve las coordenadas del país.
-     * @return Coordenadas del país como una referencia a Punto constante.
+     * @brief Método constante que devuelve las punto del país.
+     * @return Punto del país como una referencia a Punto constante.
      */
-    const Punto &Coordenadas() const;
+    const Punto &Punto() const;
 
     /**
-     * @brief Método que devuelve las coordenadas del país.
-     * @return Referencia a las coordenadas del país.
+     * @brief Método que devuelve las punto del país.
+     * @return Referencia a las punto del país.
      */
-    Punto &Coordenadas();
+    class Punto &Punto();
+
+    const pair<double,double> &Coordenadas() const;
+
+    pair<double,double> &Coordenadas();
 
     /**
      * @brief Método que devuelve la Imagen de la bandera del país si ya está cargada en bandera sino lo carga y lo devuelve como una referencia.
      * @return Imagen de la bandera del país como un objeto de la clase Imagen.
      */
     Imagen &Bandera();
-
+    bool operator<(const Pais &pais) const;
+    bool operator>(const Pais &pais) const;
 };
 /**
  * @brief Sobrecarga del operador de entrada.
@@ -129,5 +138,9 @@ public:
  * @return Referencia al flujo de entrad para poder concatenarlo.
  */
 std::istream &operator>>(std::istream &os, Pais &pais);
+std::ostream &operator<<(std::ostream &os, const Pais& pais);
+
+
+
 
 #endif

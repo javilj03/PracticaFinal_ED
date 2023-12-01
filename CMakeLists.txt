@@ -2,11 +2,18 @@ cmake_minimum_required(VERSION 3.16)
 project(practicafinal)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 set(BASE_FOLDER rutas_aereas)
 
 include_directories(${BASE_FOLDER}/include)
 
-add_library(image ${BASE_FOLDER}/src/Imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp ${BASE_FOLDER}/src/Punto.cpp ${BASE_FOLDER}/src/Pixel.cpp ${BASE_FOLDER}/src/Pais.cpp ${BASE_FOLDER}/src/Ruta.cpp ${BASE_FOLDER}/src/AlmacenRuta.cpp)
+
+add_library(image ${BASE_FOLDER}/src/Imagen.cpp  ${BASE_FOLDER}/src/imagenES.cpp ${BASE_FOLDER}/src/Punto.cpp ${BASE_FOLDER}/src/Pixel.cpp ${BASE_FOLDER}/src/Pais.cpp ${BASE_FOLDER}/src/Ruta.cpp ${BASE_FOLDER}/src/AlmacenRuta.cpp ${BASE_FOLDER}/src/Paises.cpp)
+
+if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/Tests/paises_test.cpp)
+    add_executable(paises_test ${BASE_FOLDER}/Tests/paises_test.cpp)
+    target_link_libraries(paises_test LINK_PUBLIC image)
+endif()
 
 if (EXISTS ${CMAKE_SOURCE_DIR}/${BASE_FOLDER}/Tests/imagenES_test.cpp)
     add_executable(imagenES_test ${BASE_FOLDER}/Tests/imagenES_test.cpp)

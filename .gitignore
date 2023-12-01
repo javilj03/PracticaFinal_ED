@@ -1,7 +1,5 @@
 /cmake-build-debug/
 /datos/
-/cmake-build-debug/
-/datos/
 cmake-build-debug/.cmake/api/v1/query/cache-v2
 cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1
 cmake-build-debug/.cmake/api/v1/query/codemodel-v2
@@ -24,3 +22,8 @@ cmake-build-debug/Doxyfile
 cmake-build-debug/Testing/Temporary/LastTest.log
 cmake-build-debug/build.ninja
 cmake-build-debug/cmake_install.cmake
+.idea/.name
+.idea/PracticaFinal_ED.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml

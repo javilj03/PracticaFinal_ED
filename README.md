@@ -11,7 +11,7 @@
 - rotado de imagenes (Iván)
 - pegado de imagenes (Iván)
 - Imagen.cpp (Imagen.h) (Iván)
-- coordenadas.cpp (coordenadas.h) (Iván y Javi)
+- punto.cpp (punto.h) (Iván y Javi)
 
 ## A tener en cuenta
 `` columna=(totalcolumnas /360.0)∗(180+ longitud ) ``

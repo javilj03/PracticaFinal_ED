@@ -1,11 +1,10 @@
 #include "Pais.h"
-
 /**
  * @file Pais.cpp
  * @brief Implementación de la clase Pais.
  */
 
-Pais::Pais(const char *nombre, const Punto &coordenadas, const char *path_bandera) {
+Pais::Pais(const char *nombre, const pair<double,double> &coordenadas, const char *path_bandera) {
     this->asignar(nombre, path_bandera, coordenadas);
 }
 
@@ -41,12 +40,12 @@ char *Pais::PathBandera() {
     return this->path_bandera;
 }
 
-const Punto &Pais::Coordenadas() const {
-    return coordenadas;
+const Punto &Pais::Punto() const {
+    return punto;
 }
 
-Punto &Pais::Coordenadas() {
-    return coordenadas;
+Punto &Pais::Punto() {
+    return punto;
 }
 
 
@@ -57,7 +56,7 @@ Imagen &Pais::Bandera() {
     return this->bandera;
 }
 
-void Pais::asignar(const char *nombre, const char *path_bandera, const Punto &coordenadas) {
+void Pais::asignar(const char *nombre, const char *path_bandera, const pair<double,double> &coordenadas) {
     this->nombre = strdup(nombre);
     this->path_bandera = strdup(path_bandera);
     this->coordenadas = coordenadas;
@@ -74,12 +73,35 @@ void Pais::liberar() {
     delete[] this->path_bandera;
 }
 
+bool Pais::operator<(const Pais &pais) const {
+    return strcmp(this->nombre, pais.nombre) < 0;
+}
+
+bool Pais::operator>(const Pais &pais) const {
+    return strcmp(this->nombre, pais.nombre) > 0;
+}
+
+const pair<double, double> &Pais::Coordenadas() const {
+    return this->coordenadas;
+}
+
+pair<double, double> &Pais::Coordenadas() {
+    return this->coordenadas;
+}
+
 std::istream &operator>>(std::istream &is, Pais &pais) {
     double latitud, longitud;
     std::string nombre, path_bandera;
 
     is >> latitud >> longitud >> nombre >> path_bandera;
-    pais = Pais(nombre.c_str(), Punto(latitud, longitud), path_bandera.c_str());
+    pais = Pais(nombre.c_str(), {latitud,longitud}, path_bandera.c_str());
 
     return is;
+}
+
+
+std::ostream &operator<<(ostream &os, const Pais& pais) {
+
+    os<<pais.Coordenadas().first<<"\t"<<pais.Coordenadas().second<<"\t"<<pais.Nombre()<<"\t"<<pais.PathBandera();
+    return os;
 }

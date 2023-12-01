@@ -35,15 +35,16 @@ public:
      */
     double getY() const;
 
+    double &getX();
+    double &getY();
+
     /**
      * @brief Devuelve la coordenada y del punto.
      * @return Coordenada y del punto.
      */
     double getX() const;
-    friend bool operator==(const Punto& punto1, const Punto& punto2);
 
-    friend ostream & operator<<(ostream &os, const Punto &punto);
-    friend istream & operator>>(istream &is, Punto &punto);
+    bool operator==(const Punto& punto2) const;
 };
 /**
  * @brief Función que pasa una latitud y una longitud a un punto de la imagen.
@@ -51,8 +52,11 @@ public:
  * @param longitud Coordenada longitud.
  * @param totalfilas Total de filas de la imagen.
  * @param totalcolumnas Total de columnas de la imagen.
- * @return Punto de la imagen al que equivalen las coordenadas.
+ * @return Punto de la imagen al que equivalen las punto.
  */
 Punto coordenadas_aPunto(const double &latitud, const double &longitud, int totalfilas, int totalcolumnas);
+pair<double,double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas);
+ostream & operator<<(ostream &os, const Punto &punto);
+istream & operator>>(istream &is, Punto &punto);
 
 #endif

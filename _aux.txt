@@ -55,9 +55,9 @@ class Paises{
       }
       
       class const_iterator;
-	class iterator{
+	class Iterator{
 	private:
-	    set<Pais>::iterator p;
+	    set<Pais>::Iterator p;
 	public:
 	    ............
            ..............
@@ -75,8 +75,8 @@ class Paises{
 	    friend class Paises;
 	   
 	};
-	iterator begin(){
-	  iterator it;
+	Iterator begin(){
+	  Iterator it;
 	  it.p = datos.begin();
 	  return it;
 	}  
@@ -84,22 +84,22 @@ class Paises{
 	const_iterator begin()const{
 	  ...........
 	}
-	iterator end(){
-	  iterator it;
+	Iterator end(){
+	  Iterator it;
 	  it.p = datos.end();
 	  return it;
 	}
 	const_iterator end()const{
 	  ...........
 	}
-	iterator find(const Pais &p){
-	    iterator it;
-	    set<Pais>::iterator i;
+	Iterator find(const Pais &p){
+	    Iterator it;
+	    set<Pais>::Iterator i;
 	    for (i=datos.begin(); i!=datos.end() && !((*i)==p);++i);
 	    it.p=i;
 	    return it;
 	}
-	iterator find(const Punto &p){
+	Iterator find(const Punto &p){
 	    .............
 	}
 	friend istream & operator>>(istream & is, Paises & R){

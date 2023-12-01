@@ -82,7 +82,7 @@ public:
     };
 
    /**
-   * @brief Inicializa un iterator al comienzo de la ruta
+   * @brief Inicializa un Iterator al comienzo de la ruta
    * */
     iterator begin() {
        iterator i;
@@ -91,7 +91,7 @@ public:
     }
 
    /**
-   * @brief Inicializa un iterator al final de la ruta
+   * @brief Inicializa un Iterator al final de la ruta
    * */
     iterator end() {
        iterator i;
