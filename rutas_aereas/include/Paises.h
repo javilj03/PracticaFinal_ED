@@ -8,7 +8,8 @@
 
 class Paises {
 private:
-   set<Pais, std::less<>> datos;
+    const static string CABECERA;
+    set<Pais, std::less<>> datos;
 
     void insertar(const char *fileName);
 public:
@@ -40,6 +41,8 @@ public:
 
     const_Iterator begin() const;
     const_Iterator end() const;
+    Iterator begin();
+    Iterator end();
     bool empty() const;
     bool insert(Pais pais);
     void insert(const Paises::Iterator& begin, const Paises::Iterator& end);
@@ -48,6 +51,7 @@ public:
     void erase(const Paises::Iterator& it);
 
     void clear();
+    Paises::Iterator find(const Pais& pais) const;
     void save(const char *fileName) const;
 };
 

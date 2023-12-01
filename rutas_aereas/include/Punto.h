@@ -45,6 +45,8 @@ public:
     double getX() const;
 
     bool operator==(const Punto& punto2) const;
+
+    Punto& operator=(const Punto& punto2) = default;
 };
 /**
  * @brief Función que pasa una latitud y una longitud a un punto de la imagen.

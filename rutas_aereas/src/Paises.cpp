@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const string Paises::CABECERA="# Latitud\t\t\tLongitud\t\t\tPais\t\tBandera";
+
 void Paises::insertar(const char *fileName) {
     ifstream file(fileName);
     if(!file){
@@ -58,16 +60,16 @@ Pais Paises::Iterator::operator*() const{
 }
 
 ostream &operator<<(ostream &os, const Paises &paises) {
-    os<<"# Latitud         	Longitud 	      	Pais      	Bandera"<<endl;
     for(Paises::const_Iterator i=paises.begin();i!=paises.end();i++)
         os<<std::setprecision(16)<<*i<<endl;
     return os;
 }
 
 istream &operator>>(istream &is, Paises &paises) {
-    string basura;
+    string cabecera;
     Pais nuevoPais;
-    is>>basura>>basura>>basura>>basura>>basura;
+
+    getline(is,cabecera);
     while(is>>nuevoPais)
         paises.insert(nuevoPais);
 
@@ -85,6 +87,14 @@ Paises::Iterator::Iterator(const set<Pais>::iterator &it){
 
 Paises::const_Iterator Paises::begin() const {
     return {this->datos.begin()};
+}
+
+Paises::Iterator Paises::begin() {
+    return {this->datos.begin()};
+}
+
+Paises::Iterator Paises::end() {
+    return {this->datos.end()};
 }
 
 Paises::const_Iterator Paises::end() const {
@@ -135,6 +145,11 @@ void Paises::save(const char *fileName) const {
         cerr<<"El programa tuvo un problema al intentar leer el fichero";
         exit(-2);
     }
+    file<<CABECERA<<endl;
     file<<*this;
     file.close();
+}
+
+Paises::Iterator Paises::find(const Pais &pais) const {
+    return {this->datos.find(pais)};
 }

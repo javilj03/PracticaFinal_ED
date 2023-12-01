@@ -1,4 +1,4 @@
-# Latitud         	Longitud 	      	Pais      	Bandera
+# Latitud			Longitud			Pais		Bandera
 34.52041855552284	69.20082090000005	Afganistan	afganistan.ppm
 41.33213607279617	19.8128772	Albania	albania.ppm
 52.50786264022465	13.42614194999999	Alemania	alemania.ppm
