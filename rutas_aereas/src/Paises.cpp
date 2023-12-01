@@ -1,22 +1,26 @@
 
 #include "Paises.h"
 
+/**
+ * @file Paises.cpp
+ * @brief Implementación de la clase Paises.
+ */
 
 using namespace std;
 
-const string Paises::CABECERA="# Latitud\t\t\tLongitud\t\t\tPais\t\tBandera";
+const string Paises::CABECERA = "# Latitud\t\t\tLongitud\t\t\tPais\t\tBandera";
 
 void Paises::insertar(const char *fileName) {
     ifstream file(fileName);
-    if(!file){
-        cerr<<"Ocurrió un error al abrir el fichero";
+    if (!file) {
+        cerr << "Ocurrió un error al abrir el fichero";
         exit(-1);
     }
-    if(!file.is_open()){
-        cerr<<"El programa tuvo un problema al intentar leer el fichero";
+    if (!file.is_open()) {
+        cerr << "El programa tuvo un problema al intentar leer el fichero";
         exit(-2);
     }
-    file>>*this;
+    file >> *this;
     file.close();
 }
 
@@ -42,12 +46,12 @@ Paises::Iterator &Paises::Iterator::operator++(int) {
     return *this;
 }
 
-void Paises::insert(const Paises::Iterator& begin, const Paises::Iterator& end) {
-    for(Paises::Iterator i = begin;i!=end;i++)
+void Paises::insert(const Paises::Iterator &begin, const Paises::Iterator &end) {
+    for (Paises::Iterator i = begin; i != end; i++)
         this->insert(*i);
 }
 
-bool Paises::Iterator::operator!=(Paises::Iterator it2) const{
+bool Paises::Iterator::operator!=(Paises::Iterator it2) const {
     return this->iterador != it2.iterador;
 }
 
@@ -55,13 +59,13 @@ Paises::Iterator::Iterator() {
     this->iterador = set<Pais>::iterator();
 }
 
-Pais Paises::Iterator::operator*() const{
+Pais Paises::Iterator::operator*() const {
     return *this->iterador;
 }
 
 ostream &operator<<(ostream &os, const Paises &paises) {
-    for(Paises::const_Iterator i=paises.begin();i!=paises.end();i++)
-        os<<std::setprecision(16)<<*i<<endl;
+    for (Paises::const_Iterator i = paises.begin(); i != paises.end(); i++)
+        os << std::setprecision(16) << *i << endl;
     return os;
 }
 
@@ -69,20 +73,20 @@ istream &operator>>(istream &is, Paises &paises) {
     string cabecera;
     Pais nuevoPais;
 
-    getline(is,cabecera);
-    while(is>>nuevoPais)
+    getline(is, cabecera);
+    while (is >> nuevoPais)
         paises.insert(nuevoPais);
 
     return is;
 }
 
-Paises::Iterator::Iterator(const Paises::Iterator &other){
+Paises::Iterator::Iterator(const Paises::Iterator &other) {
     this->iterador = other.iterador;
 }
-Paises::Iterator::Iterator(const set<Pais>::iterator &it){
+
+Paises::Iterator::Iterator(const set<Pais>::iterator &it) {
     this->iterador = it;
 }
-
 
 
 Paises::const_Iterator Paises::begin() const {
@@ -101,7 +105,7 @@ Paises::const_Iterator Paises::end() const {
     return {this->datos.end()};
 }
 
-void Paises::erase(const Pais& pais) {
+void Paises::erase(const Pais &pais) {
     this->datos.erase(pais);
 }
 
@@ -137,16 +141,16 @@ void Paises::clear() {
 
 void Paises::save(const char *fileName) const {
     ofstream file(fileName);
-    if(!file){
-        cerr<<"Ocurrió un error al abrir el fichero";
+    if (!file) {
+        cerr << "Ocurrió un error al abrir el fichero";
         exit(-1);
     }
-    if(!file.is_open()){
-        cerr<<"El programa tuvo un problema al intentar leer el fichero";
+    if (!file.is_open()) {
+        cerr << "El programa tuvo un problema al intentar leer el fichero";
         exit(-2);
     }
-    file<<CABECERA<<endl;
-    file<<*this;
+    file << CABECERA << endl;
+    file << *this;
     file.close();
 }
 

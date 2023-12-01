@@ -29,8 +29,10 @@ private:
      * @brief Ruta en el equipo de la bandera del pais como un array de carácteres.
      */
     char *path_bandera;
-
-    pair<double,double> coordenadas = {0,0};
+    /**
+     * @brief Preguntar si lo hago asi
+     */
+    pair<double, double> coordenadas = {0, 0};
 
     /**
      * @brief Punto del pais usando un struct Punto.
@@ -43,7 +45,7 @@ private:
      * @param path_bandera Array de carácteres que contiene la ruta de la bandera del país.
      * @param coordenadas Punto que contiene las punto del país.
      */
-    void asignar(const char *nombre, const char *path_bandera, const pair<double,double> &coordenadas);
+    void asignar(const char *nombre, const char *path_bandera, const pair<double, double> &coordenadas);
 
     /**
      * @brief Función que copia los valores de los atributos de un objeto de la clase en otro de la misma clase.
@@ -63,7 +65,8 @@ public:
      * @param coordenadas Punto del país.
      * @param path_bandera Ruta hacia la bandera del país.
      */
-    Pais(const char *nombre = nullptr, const pair<double,double> &coordenadas ={0,0}, const char *path_bandera = nullptr);
+    Pais(const char *nombre = nullptr, const pair<double, double> &coordenadas = {0, 0},
+         const char *path_bandera = nullptr);
 
     /**
      * @brief Constructor de copia de la clase.
@@ -108,29 +111,35 @@ public:
     char *PathBandera();
 
     /**
-     * @brief Método constante que devuelve las punto del país.
+     * @brief Método constante que devuelve el punto del país.
      * @return Punto del país como una referencia a Punto constante.
      */
     const Punto &Punto() const;
 
     /**
-     * @brief Método que devuelve las punto del país.
+     * @brief Método que devuelve el punto del país.
      * @return Referencia a las punto del país.
      */
     class Punto &Punto();
 
-    const pair<double,double> &Coordenadas() const;
+    const pair<double, double> &Coordenadas() const;
 
-    pair<double,double> &Coordenadas();
+    pair<double, double> &Coordenadas();
 
     /**
      * @brief Método que devuelve la Imagen de la bandera del país si ya está cargada en bandera sino lo carga y lo devuelve como una referencia.
      * @return Imagen de la bandera del país como un objeto de la clase Imagen.
      */
     Imagen &Bandera();
+
+    /**
+     * @brief Sobrecarga del operador menor que.
+     * @param pais País a comparar.
+     * @return True si this es menor que Pais, false en caso contrario.
+     */
     bool operator<(const Pais &pais) const;
-    bool operator>(const Pais &pais) const;
 };
+
 /**
  * @brief Sobrecarga del operador de entrada.
  * @param os Entrada del flujo.
@@ -138,9 +147,14 @@ public:
  * @return Referencia al flujo de entrad para poder concatenarlo.
  */
 std::istream &operator>>(std::istream &os, Pais &pais);
-std::ostream &operator<<(std::ostream &os, const Pais& pais);
 
-
+/**
+ * @brief Sobrecarga del operador de salida.
+ * @param os Salida del flujo.
+ * @param pais País a mostrar.
+ * @return Referencia al flujo de salida para poder concatenarlo.
+ */
+std::ostream &operator<<(std::ostream &os, const Pais &pais);
 
 
 #endif
