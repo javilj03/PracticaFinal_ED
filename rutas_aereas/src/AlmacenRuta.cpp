@@ -1,13 +1,24 @@
 #include "AlmacenRuta.h"
+#include <iostream>
 #include <sstream>
+#include <fstream>
+using namespace std;
 
-AlmacenRuta::AlmacenRuta() {}
+AlmacenRuta::AlmacenRuta(const char* fileName){
+    ifstream entradaRutas(fileName);
+    if(!entradaRutas){
+        cerr<<"Error al cargar el fichero de datos de las rutas."<< endl;
+        exit(1);
+    }
+    entradaRutas>>*this;
+    entradaRutas.close();
+}
 
-void AlmacenRuta::insert(std::string nombre, Ruta &ruta) {
+void AlmacenRuta::insert(const string& nombre, const Ruta &ruta) {
    this->rutas.emplace(nombre,ruta);
 }
 
-void AlmacenRuta::erase(string nombre) {
+void AlmacenRuta::erase(const string &nombre) {
    for (auto it = rutas.begin(); it != rutas.end(); ) {
       if (it->first == nombre) {
          it = rutas.erase(it);
@@ -17,7 +28,7 @@ void AlmacenRuta::erase(string nombre) {
    }
 }
 
-Ruta AlmacenRuta::getRuta(std::string nombre) {
+Ruta AlmacenRuta::getRuta(const string &nombre) {
    return rutas[nombre];
 }
 

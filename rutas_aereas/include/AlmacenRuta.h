@@ -18,27 +18,31 @@ public:
     /**
     * @brief Constructor de la clase
     */
-    AlmacenRuta();
-
+    AlmacenRuta() = default;
+    /**
+     * @brief Constructor a partir de la ruta del fichero
+     * @param ruta FileName de la ruta del fichero de datos
+     */
+     AlmacenRuta(const char* fileName);
     /**
     * @brief inserta una ruta a el map
     * @param nombre nombre de la ruta a la que pertenece
     * @param ruta objeto ruta a insertar
     */
-    void insert(string nombre, Ruta &ruta);
+    void insert(const string& nombre, const Ruta &ruta);
 
     /**
     * @brief elimina la ruta con el nombre asociado
     * @param nombre nombre de la ruta
     */
-    void erase(string nombre);
+    void erase(const string &nombre);
 
     /**
     * @brief devuelve la ruta asociada al nombre
     * @param nombre nombre de la ruta
     * @return Objeto Ruta
     */
-    Ruta getRuta(string nombre);
+    Ruta getRuta(const string &nombre);
 
     friend istream &operator>>(std::istream &is, AlmacenRuta &almacenRuta);
 

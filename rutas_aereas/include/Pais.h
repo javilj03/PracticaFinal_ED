@@ -5,7 +5,6 @@
 #include "Punto.h"
 #include <cstring>
 
-
 /**
  * @file Pais.h Cabecera de la clase Pais
  * @brief Cabecera de la clase Pais.
@@ -17,6 +16,8 @@
  */
 class Pais {
 private:
+    static int total_filas;
+    static int total_columnas;
     /**
      * @brief Imagen de la bandera del pais. Esta inicializado a null hasta que se necesite la imagen por primera vez.
      */
@@ -24,15 +25,11 @@ private:
     /**
      * @brief Nombre del pais como un array de carácteres.
      */
-    char *nombre;
+    char *nombre{};
     /**
      * @brief Ruta en el equipo de la bandera del pais como un array de carácteres.
      */
-    char *path_bandera;
-    /**
-     * @brief Preguntar si lo hago asi
-     */
-    pair<double, double> coordenadas = {0, 0};
+    char *path_bandera{};
 
     /**
      * @brief Punto del pais usando un struct getPunto.
@@ -45,7 +42,7 @@ private:
      * @param path_bandera Array de carácteres que contiene la ruta de la bandera del país.
      * @param coordenadas getPunto que contiene las punto del país.
      */
-    void asignar(const char *nombre, const char *path_bandera, const pair<double, double> &coordenadas);
+    void asignar(const char *nombre, const char *path_bandera, const Punto &punto);
 
     /**
      * @brief Función que copia los valores de los atributos de un objeto de la clase en otro de la misma clase.
@@ -65,8 +62,8 @@ public:
      * @param coordenadas getPunto del país.
      * @param path_bandera Ruta hacia la bandera del país.
      */
-    Pais(const char *nombre = "", const pair<double, double> &coordenadas = {0, 0},
-         const char *path_bandera = "");
+    Pais(const char *nombre = "", const Punto &punto = Punto(0,0),
+         const char *path_bandera = "", const int &total_filas=768, const int &total_columnas=1536);
 
     /**
      * @brief Constructor de copia de la clase.
@@ -122,16 +119,14 @@ public:
      */
     Punto &getPunto();
 
-    const pair<double, double> &Coordenadas() const;
-
-    pair<double, double> &Coordenadas();
-
     /**
      * @brief Método que devuelve la Imagen de la bandera del país si ya está cargada en bandera sino lo carga y lo devuelve como una referencia.
      * @return Imagen de la bandera del país como un objeto de la clase Imagen.
      */
     Imagen &Bandera();
 
+
+    pair<int,int> Tamano_mapa() const;
     /**
      * @brief Sobrecarga del operador menor que.
      * @param pais País a comparar.

@@ -4,9 +4,13 @@
  * @file Pais.cpp
  * @brief Implementación de la clase Pais.
  */
+int Pais::total_filas=0;
+int Pais::total_columnas=0;
+Pais::Pais(const char *nombre, const Punto &punto, const char *path_bandera, const int &total_filas, const int &total_columnas) {
 
-Pais::Pais(const char *nombre, const pair<double, double> &coordenadas, const char *path_bandera) {
-    this->asignar(nombre, path_bandera, coordenadas);
+    Pais::total_filas = total_filas;
+    Pais::total_columnas = total_columnas;
+    this->asignar(nombre, path_bandera, punto);
 }
 
 Pais::Pais(const Pais &pais) {
@@ -46,9 +50,6 @@ const Punto &Pais::getPunto() const {
 }
 
 Punto &Pais::getPunto() {
-    if (this->punto.getX() < 0 && this->punto.getY() < 0)
-        this->punto = coordenadas_aPunto(this->coordenadas.first, this->coordenadas.second, 768, 1536);
-
     return punto;
 }
 
@@ -60,14 +61,14 @@ Imagen &Pais::Bandera() {
     return this->bandera;
 }
 
-void Pais::asignar(const char *nombre, const char *path_bandera, const pair<double, double> &coordenadas) {
+void Pais::asignar(const char *nombre, const char *path_bandera, const Punto &punto) {
     this->nombre = strdup(nombre);
     this->path_bandera = strdup(path_bandera);
-    this->coordenadas = coordenadas;
+    this->punto = punto;
 }
 
 void Pais::copiar(const Pais &pais) {
-    this->asignar(pais.nombre, pais.path_bandera, pais.coordenadas);
+    this->asignar(pais.nombre, pais.path_bandera, pais.punto);
     if (pais.bandera.Filas() != 0 && pais.bandera.Columnas() != 0)
         this->bandera = pais.bandera;
 }
@@ -83,29 +84,21 @@ bool Pais::operator<(const Pais &pais) const {
     return strcmp(this->nombre, pais.nombre) < 0;
 }
 
-
-const pair<double, double> &Pais::Coordenadas() const {
-    return this->coordenadas;
-}
-
-pair<double, double> &Pais::Coordenadas() {
-    return this->coordenadas;
-}
-
 std::istream &operator>>(std::istream &is, Pais &pais) {
     double latitud, longitud;
     std::string nombre, path_bandera;
-
     is >> latitud >> longitud >> nombre >> path_bandera;
-    pais = Pais(nombre.c_str(), {latitud, longitud}, path_bandera.c_str());
+    pais = Pais(nombre.c_str(), coordenadas_aPunto(latitud, longitud, pais.Tamano_mapa().first,pais.Tamano_mapa().second), path_bandera.c_str());
 
     return is;
 }
-
+pair<int,int> Pais::Tamano_mapa() const {
+    return {total_filas,total_columnas};
+}
 
 std::ostream &operator<<(ostream &os, const Pais &pais) {
-
-    os << pais.Coordenadas().first << "\t" << pais.Coordenadas().second << "\t" << pais.Nombre() << "\t"
+    std::pair<int, int> coordenadas = punto_aCoordenadas(pais.getPunto(),pais.Tamano_mapa().first, pais.Tamano_mapa().second);
+    os << coordenadas.first << "\t" << coordenadas.second << "\t" << pais.Nombre() << "\t"
        << pais.PathBandera();
     return os;
 }

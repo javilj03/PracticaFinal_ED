@@ -5,6 +5,7 @@
 #include <iostream>
 #include <Pais.h>
 #include <iomanip>
+#include <cstring>
 /**
  * @file Paises.h Cabecera de la clase Paises
  * @brief Clase que almacena todos los paises de un fichero
@@ -17,6 +18,10 @@ private:
      * @brief Cabecera del fichero.
      */
     const static string CABECERA;
+    /**
+     * @brief Directorio de las banderas de los paises.
+     */
+     static string dir_banderas;
     /**
      * @brief Set que almacena todos los paises ordenados por orden alfabético.
      */
@@ -33,7 +38,7 @@ public:
      * @brief Constructor a partir de un fichero.
      * @param fileName Ruta del fichero a leer.
      */
-    Paises(const char *fileName);
+    Paises(const char *fileName, const char *dir_banderas = "");
 
     /**
      * @brief Clase iteradora que permite recorrer el set de paises.

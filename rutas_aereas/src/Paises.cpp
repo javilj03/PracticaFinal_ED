@@ -9,7 +9,7 @@
 using namespace std;
 
 const string Paises::CABECERA = "# Latitud\t\t\tLongitud\t\t\tPais\t\tBandera";
-
+string Paises::dir_banderas = "";
 void Paises::insertar(const char *fileName) {
     ifstream file(fileName);
     if (!file) {
@@ -21,11 +21,18 @@ void Paises::insertar(const char *fileName) {
         exit(-2);
     }
     file >> *this;
+    if(!Paises::dir_banderas.empty())
+        for(auto pais: this->datos) {
+            string salida = Paises::dir_banderas + pais.PathBandera();
+            strcpy(pais.PathBandera(),salida.c_str());
+        }
+
     file.close();
 }
 
-Paises::Paises(const char *fileName) {
+Paises::Paises(const char *fileName, const char *dir_banderas) {
     this->insertar(fileName);
+    Paises::dir_banderas = dir_banderas;
 }
 
 bool Paises::empty() const {
