@@ -6,6 +6,8 @@
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
  */
+int Punto::total_filas=768;
+int Punto::total_columnas=1536;
 Punto::Punto(double x, double y) {
     this->x = x;
     this->y = y;
@@ -36,8 +38,9 @@ ostream & operator<<(ostream &os, const Punto &punto){
 }
 istream & operator>>(istream &is,Punto &punto){
     char parentesis, coma;
-    is>>parentesis>>punto.getX()>>coma>>punto.getX()>>parentesis;
-
+    double auxX,auxY;
+    is>>parentesis>>auxX>>coma>>auxY>>parentesis;
+    punto = coordenadas_aPunto(auxX,auxY, punto.getTotalFilas(), punto.getTotalColumnas());
     return is;
 }
 
@@ -53,4 +56,12 @@ double &Punto::getX() {
 
 double &Punto::getY() {
     return this->y;
+}
+
+int Punto::getTotalColumnas() const {
+    return Punto::total_columnas;
+}
+
+int Punto::getTotalFilas() const {
+    return Punto::total_filas;
 }

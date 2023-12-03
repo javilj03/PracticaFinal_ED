@@ -16,6 +16,10 @@ using namespace std;
 class Punto {
 private:
     /**
+     * @brief Variable con el tamaño total del mapa
+     */
+     static int total_filas, total_columnas;
+    /**
      * @brief Coordenada x del punto.
      */
     double x;
@@ -44,6 +48,8 @@ public:
      */
     double getX() const;
 
+    int getTotalColumnas() const;
+    int getTotalFilas() const;
     bool operator==(const Punto& punto2) const;
 
     Punto& operator=(const Punto& punto2) = default;

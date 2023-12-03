@@ -8,6 +8,7 @@
 #include <Pixel.h>
 #include <imagenES.h>
 #include <iostream>
+#include <cmath>
 /**
  * @file Imagen.h
  * @brief Este fichero contiene la cabecera de la clase Imagen y el enum Tipo_Pegado.
@@ -159,5 +160,6 @@ public:
 
 };
 
+Imagen Rota(const Imagen &Io, double angulo);
 
 #endif

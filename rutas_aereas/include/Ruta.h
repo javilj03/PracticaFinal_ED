@@ -25,14 +25,12 @@ private:
     * @brief Lista de todos los puntos que recorre
     */
     vector<Punto> puntos;
-    /**
-    * @brief Nombre de la ruta
-    */
+
 public:
     /**
     * @brief Constructor de la clase
     */
-    Ruta();
+    Ruta() = default;
 
     /**
     * @brief Inserta un nuevo punto
@@ -46,11 +44,8 @@ public:
     */
     void erase(Punto punto);
 
-    /**
-    * @brief Modifica el codigo de la ruta
-    * @param code string del nuevo codigo de la ruta
-    */
-    void setCode(string code);
+    Punto & operator[](const int &i);
+    const Punto & operator[](const int &i )const;
 
     /**
     * @brief Obtiene el vector con todos los puntos de la ruta

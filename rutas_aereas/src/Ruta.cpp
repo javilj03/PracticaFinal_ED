@@ -3,7 +3,7 @@
 #include "Ruta.h"
 #include "Punto.h"
 using namespace std;
-Ruta::Ruta() {}
+
 
 void Ruta::insert(Punto punto) {
    puntos.push_back(punto);
@@ -15,7 +15,6 @@ void Ruta::erase(Punto punto) {
       puntos.erase(it);
    }
 }
-//Creo tambien erase que reciba un iterador
 void Ruta::erase(iterator it) {
 puntos.erase(it.it);
 }
@@ -49,4 +48,12 @@ ostream &operator<<(std::ostream &os, const Ruta &ruta) {
    }
 
    return os;
+}
+
+Punto &Ruta::operator[](const int &i) {
+    return this->puntos[i];
+}
+
+const Punto &Ruta::operator[](const int &i) const {
+    return this->puntos[i];
 }

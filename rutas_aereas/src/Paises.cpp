@@ -31,8 +31,8 @@ void Paises::insertar(const char *fileName) {
 }
 
 Paises::Paises(const char *fileName, const char *dir_banderas) {
-    this->insertar(fileName);
     Paises::dir_banderas = dir_banderas;
+    this->insertar(fileName);
 }
 
 bool Paises::empty() const {
