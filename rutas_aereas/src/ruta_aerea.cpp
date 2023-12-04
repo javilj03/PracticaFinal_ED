@@ -27,7 +27,9 @@ int main(int argc, char *argv[]) {
         bool encontrado = false;
         for(Paises::Iterator it = paises.begin(); it != paises.end() && !encontrado; it++){
             if(ruta[i].getX() == (*it).getPunto().getX() && ruta[i].getY() == (*it).getPunto().getY()) {
-                mapa.PutImagen((*it).getPunto().getX(), (*it).getPunto().getY(), (*it).Bandera(), OPACO);
+                double punto_medio_x = (*it).Bandera().Filas()/2;
+                double punto_medio_y = (*it).Bandera().Columnas()/2;
+                mapa.PutImagen((*it).getPunto().getX()-punto_medio_x,(*it).getPunto().getY()-punto_medio_y, (*it).Bandera(), OPACO);
                 encontrado = true;
             }
         }

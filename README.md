@@ -17,3 +17,6 @@
 `` columna=(totalcolumnas /360.0)∗(180+ longitud ) ``
 
 `` fila=( totalfilas/180.0)∗( 90−latitud ) ``
+## Preguntas para el profesor
+- Como pasar la resolucion de la imagen a las clases Paises y Punto
+- Problemas con la máscara al rotar el avión
