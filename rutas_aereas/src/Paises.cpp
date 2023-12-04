@@ -10,6 +10,7 @@ using namespace std;
 
 const string Paises::CABECERA = "# Latitud\t\t\tLongitud\t\t\tPais\t\tBandera";
 string Paises::dir_banderas = "";
+
 void Paises::insertar(const char *fileName) {
     ifstream file(fileName);
     if (!file) {
@@ -20,12 +21,10 @@ void Paises::insertar(const char *fileName) {
         cerr << "El programa tuvo un problema al intentar leer el fichero";
         exit(-2);
     }
+
     file >> *this;
-    if(!Paises::dir_banderas.empty())
-        for(auto pais: this->datos) {
-            string salida = Paises::dir_banderas + pais.PathBandera();
-            strcpy(pais.PathBandera(),salida.c_str());
-        }
+
+
 
     file.close();
 }
@@ -78,11 +77,13 @@ ostream &operator<<(ostream &os, const Paises &paises) {
 
 istream &operator>>(istream &is, Paises &paises) {
     string cabecera;
-    Pais nuevoPais;
 
+    Pais nuevoPais("",paises.getDir_banderas());
     getline(is, cabecera);
-    while (is >> nuevoPais)
+    while (is >> nuevoPais) {
         paises.insert(nuevoPais);
+        nuevoPais = Pais("",paises.getDir_banderas());
+    }
 
     return is;
 }
@@ -163,4 +164,8 @@ void Paises::save(const char *fileName) const {
 
 Paises::Iterator Paises::find(const Pais &pais) const {
     return {this->datos.find(pais)};
+}
+
+string Paises::getDir_banderas() const {
+    return dir_banderas;
 }

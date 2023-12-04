@@ -121,13 +121,13 @@ void Imagen::PutImagen(const int &i, const int &j, const Imagen &im, const Tipo_
     if (tipo == OPACO) {
         for (int fila = 0; fila < parada_filas; fila++)
             for (int columna = 0; columna < parada_columnas; columna++)
-                if (im.mascara[fila][columna] == 255)
+                if(im.mascara== nullptr || im.mascara[fila][columna] == 255)
                     this->datos[i + fila][j + columna] = im.datos[fila][columna];
 
     } else if (tipo == BLENDING) {
         for (int fila = 0; fila < parada_filas; fila++)
             for (int columna = 0; columna < parada_columnas; columna++)
-                if (im.mascara[fila][columna] == 255)
+                if (im.mascara[fila][columna] == 255 || im.mascara == nullptr)
                     this->datos[i + fila][j + columna] = this->datos[i + fila][j + columna].media(
                             im.datos[fila][columna]);
     }

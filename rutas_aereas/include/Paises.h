@@ -40,6 +40,7 @@ public:
      */
     Paises(const char *fileName, const char *dir_banderas = "");
 
+    string getDir_banderas() const;
     /**
      * @brief Clase iteradora que permite recorrer el set de paises.
      */

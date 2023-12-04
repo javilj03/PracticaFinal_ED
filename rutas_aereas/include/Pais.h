@@ -25,11 +25,11 @@ private:
     /**
      * @brief Nombre del pais como un array de carácteres.
      */
-    char *nombre{};
+    string nombre;
     /**
      * @brief Ruta en el equipo de la bandera del pais como un array de carácteres.
      */
-    char *path_bandera{};
+    string path_bandera;
 
     /**
      * @brief Punto del pais usando un struct getPunto.
@@ -42,7 +42,7 @@ private:
      * @param path_bandera Array de carácteres que contiene la ruta de la bandera del país.
      * @param coordenadas getPunto que contiene las punto del país.
      */
-    void asignar(const char *nombre, const char *path_bandera, const Punto &punto);
+    void asignar(const string &nombre, const string &path_bandera, const Punto &punto);
 
     /**
      * @brief Función que copia los valores de los atributos de un objeto de la clase en otro de la misma clase.
@@ -61,9 +61,10 @@ public:
      * @param nombre Nombre del país.
      * @param coordenadas getPunto del país.
      * @param path_bandera Ruta hacia la bandera del país.
+     * @param total_filas Numero de filas de la imagen
+     * @param total_columnas Numero de columnas de la imagen
      */
-    Pais(const char *nombre = "", const Punto &punto = Punto(0,0),
-         const char *path_bandera = "", const int &total_filas=768, const int &total_columnas=1536);
+    Pais(const string &nombre="", const string &path_bandera="",const Punto &punto = Punto(0,0), const int &total_filas=768, const int &total_columnas=1536);
 
     /**
      * @brief Constructor de copia de la clase.
@@ -87,25 +88,25 @@ public:
      * @brief Método constante que devuelve el nombre del país.
      * @return Nombre del país como un puntero a char constante.
      */
-    const char *Nombre() const;
+    const string &Nombre() const;
 
     /**
      * @brief Método que devuelve el nombre del país.
      * @return Nombre del país como un puntero a char.
      */
-    char *Nombre();
+    string &Nombre();
 
     /**
      * @brief Método constante que devuelve la ruta de la bandera del país.
      * @return Ruta de la bandera del país como un puntero a char constante.
      */
-    const char *PathBandera() const;
+    const string &PathBandera() const;
 
     /**
      * @brief Método que devuelve la ruta de la bandera del país.
      * @return Ruta de la bandera del país como un puntero a char.
      */
-    char *PathBandera();
+    string &PathBandera();
 
     /**
      * @brief Método constante que devuelve el punto del país.

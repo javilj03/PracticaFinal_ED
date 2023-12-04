@@ -6,7 +6,7 @@
  */
 int Pais::total_filas=0;
 int Pais::total_columnas=0;
-Pais::Pais(const char *nombre, const Punto &punto, const char *path_bandera, const int &total_filas, const int &total_columnas) {
+Pais::Pais(const string &nombre, const string &path_bandera,const Punto &punto, const int &total_filas, const int &total_columnas) {
 
     Pais::total_filas = total_filas;
     Pais::total_columnas = total_columnas;
@@ -29,19 +29,19 @@ Pais &Pais::operator=(const Pais &pais) {
     return *this;
 }
 
-const char *Pais::Nombre() const {
+const string &Pais::Nombre() const {
     return this->nombre;
 }
 
-char *Pais::Nombre() {
+string &Pais::Nombre() {
     return this->nombre;
 }
 
-const char *Pais::PathBandera() const {
+const string &Pais::PathBandera() const {
     return this->path_bandera;
 }
 
-char *Pais::PathBandera() {
+string &Pais::PathBandera() {
     return this->path_bandera;
 }
 
@@ -56,14 +56,14 @@ Punto &Pais::getPunto() {
 
 Imagen &Pais::Bandera() {
     if (this->bandera.Filas() == 0 || this->bandera.Columnas() == 0)
-        this->bandera = Imagen(this->path_bandera);
+        this->bandera = Imagen(this->path_bandera.c_str());
 
     return this->bandera;
 }
 
-void Pais::asignar(const char *nombre, const char *path_bandera, const Punto &punto) {
-    this->nombre = strdup(nombre);
-    this->path_bandera = strdup(path_bandera);
+void Pais::asignar(const string &nombre, const string &path_bandera, const Punto &punto) {
+    this->nombre = nombre;
+    this->path_bandera = path_bandera;
     this->punto = punto;
 }
 
@@ -74,21 +74,21 @@ void Pais::copiar(const Pais &pais) {
 }
 
 void Pais::liberar() {
-    if(this->nombre!= nullptr)
-        free(this->nombre);
+    /*if(this->nombre!= nullptr)
+      //  free(this->nombre);
     if(this->path_bandera!= nullptr)
-        free(this->path_bandera);
+       // free(this->path_bandera);*/
 }
 
 bool Pais::operator<(const Pais &pais) const {
-    return strcmp(this->nombre, pais.nombre) < 0;
+    return this->nombre < pais.nombre;
 }
 
-std::istream &operator>>(std::istream &is, Pais &pais) {
+istream &operator>>(istream &is, Pais &pais) {
     double latitud, longitud;
-    std::string nombre, path_bandera;
+    string nombre, path_bandera;
     is >> latitud >> longitud >> nombre >> path_bandera;
-    pais = Pais(nombre.c_str(), coordenadas_aPunto(latitud, longitud, pais.Tamano_mapa().first,pais.Tamano_mapa().second), path_bandera.c_str());
+    pais = Pais(nombre, pais.PathBandera()+path_bandera, coordenadas_aPunto(latitud, longitud, pais.Tamano_mapa().first,pais.Tamano_mapa().second));
 
     return is;
 }
