@@ -78,13 +78,16 @@ public:
      * @pre filas y  columnas deben ser mayores que 0 para asignar espacio en memoria a datos.
      * @post Asigna espacio en memoria para datos pero no inicializa sus valores.
      */
-    Imagen(const int &filas = 0, const int &columnas = 0);
+    Imagen(const int &filas = 0, const int &columnas = 0, const int &filas_masc = 0,const int &columnas_mascara = 0);
 
     /**
      * @brief Constructor de copia de la clase.
      * @param im Imagen a copiar.
      */
     Imagen(const Imagen &im);
+
+    unsigned char** Mascara() const;
+    unsigned char** Mascara();
 
     /**
      * @brief Constructor de la clase que lee una Imagen de disco y asigna espacio en memoria para datos y mascara e inicializa sus valores de los ficheros.

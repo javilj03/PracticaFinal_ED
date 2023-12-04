@@ -41,8 +41,14 @@ void Imagen::liberar() {
     }
 }
 
-Imagen::Imagen(const int &filas, const int &columnas) {
+Imagen::Imagen(const int &filas, const int &columnas, const int &filas_mascara, const int &columnas_mascara) {
     asignarMemoria(filas, columnas);
+    if(filas_mascara!=0 && columnas_mascara!=0){
+        this->mascara = new unsigned char *[filas_mascara];
+        this->mascara[0] = new unsigned char[filas_mascara * columnas_mascara]{0};
+        for (int i = 1; i < filas_mascara; i++)
+                    this->mascara[i] = this->mascara[i - 1] + columnas_mascara;
+    }
 }
 
 Imagen::Imagen(const Imagen &im) {
@@ -110,10 +116,7 @@ Imagen &Imagen::operator=(const Imagen &im) {
 }
 
 void Imagen::PutImagen(const int &i, const int &j, const Imagen &im, const Tipo_Pegado &tipo) {
-    if (im.mascara == nullptr && tipo == BLENDING) {
-        cerr << "Error: La Imagen no tiene máscara" << endl;
-        exit(1);
-    }
+
 
     int parada_filas = im.filas < (this->filas - i) ? im.filas : (this->filas - i);
     int parada_columnas = im.columnas < (this->columnas - j) ? im.columnas : (this->columnas - j);
@@ -127,7 +130,7 @@ void Imagen::PutImagen(const int &i, const int &j, const Imagen &im, const Tipo_
     } else if (tipo == BLENDING) {
         for (int fila = 0; fila < parada_filas; fila++)
             for (int columna = 0; columna < parada_columnas; columna++)
-                if (im.mascara[fila][columna] == 255 || im.mascara == nullptr)
+                if (im.mascara == nullptr|| im.mascara[fila][columna] == 255)
                     this->datos[i + fila][j + columna] = this->datos[i + fila][j + columna].media(
                             im.datos[fila][columna]);
     }
@@ -145,6 +148,14 @@ const Pixel &Imagen::operator()(const int &i, const int &j) const {
         throw std::out_of_range("Error: Índices fuera de rango");
 
     return this->datos[i][j];
+}
+
+unsigned char **Imagen::Mascara() const {
+    return this->mascara;
+}
+
+unsigned char **Imagen::Mascara() {
+    return this->mascara;
 }
 
 Imagen Rota(const Imagen &Io, double angulo) {
@@ -188,7 +199,7 @@ Imagen Rota(const Imagen &Io, double angulo) {
     newimgrows = (unsigned) ceil((double) new_row_max - new_row_min);
     newimgcols = (unsigned) ceil((double) new_col_max - new_col_min);
 
-    Imagen Iout(newimgrows, newimgcols);
+    Imagen Iout(newimgrows, newimgcols,newimgrows,newimgcols);
     for (int rows = 0; rows < newimgrows; rows++) {
         for (int cols = 0; cols < newimgcols; cols++) {
             float oldrowcos = ((float) rows + new_row_min) * cos(-rads);
@@ -202,6 +213,8 @@ Imagen Rota(const Imagen &Io, double angulo) {
             if ((old_row >= 0) && (old_row < Io.Filas()) &&
                 (old_col >= 0) && (old_col < Io.Columnas())) {
                 Iout(rows, cols) = Io(old_row, old_col);
+                if (Io.Mascara() != nullptr)
+                    Iout.Mascara()[rows][cols] = Io.Mascara()[(int)old_row][(int)old_col];
 
             } else
                 Iout(rows, cols).Red() = Iout(rows, cols).Green() = Iout(rows, cols).Blue() = 255;

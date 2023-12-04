@@ -36,8 +36,8 @@ int main(int argc, char *argv[]) {
         double theta_radians = atan2(ruta[i+1].getY() - ruta[i].getY(), ruta[i+1].getX() - ruta[i].getX());
         double theta_degrees = fmod((180.0 / M_PI) * theta_radians + 360.0, 360.0);
 
-       /* Imagen avion_rotado = Rota(avion, theta_degrees);
-        mapa.PutImagen(ruta[i].getX(), ruta[i].getY(), avion_rotado, BLENDING);*/
+        Imagen avion_rotado = Rota(avion, theta_degrees);
+        mapa.PutImagen(ruta[i].getX()-avion_rotado.Filas()/2, ruta[i].getY()-avion_rotado.Columnas()/2, avion_rotado, OPACO);
     }
 
     mapa.EscribirImagen(argv[7]);
