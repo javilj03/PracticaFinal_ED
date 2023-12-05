@@ -11,6 +11,7 @@
  * @brief Clase que almacena todos los paises de un fichero
  * @see Pais
  * @author Iván Rodríguez Chacón
+ * @author Javier Lama Jiménez
  */
 class Paises {
 private:
@@ -26,7 +27,6 @@ private:
      * @brief Set que almacena todos los paises ordenados por orden alfabético.
      */
     set<Pais> datos;
-
     /**
      * @brief Función que inserta los países de un fichero en el set.
      * @param fileName Nombre del fichero.
@@ -40,7 +40,7 @@ public:
      */
     Paises(const char *fileName, const char *dir_banderas = "");
 
-    string getDir_banderas() const;
+    static string getDir_banderas() ;
     /**
      * @brief Clase iteradora que permite recorrer el set de paises.
      */
@@ -89,7 +89,7 @@ public:
          * @param it2 Iterador a comparar.
          * @return True si son distintos, false en caso contrario.
          */
-        bool operator!=(Iterator it2) const;
+        bool operator!=(const Iterator& it2) const;
     };
     /**
      * @brief Clase iteradora constante que permite recorrer el set de paises.
@@ -158,7 +158,7 @@ public:
      * @param pais Pais a insertar
      * @return True si fue posible, false en caso contrario.
      */
-    bool insert(Pais pais);
+    bool insert(const Pais& pais);
     /**
      * @brief Funcion que inserta un conjunto de paises en el set.
      * @param begin Iterador del comienzo.

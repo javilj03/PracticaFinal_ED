@@ -4,6 +4,7 @@
  * @file Pixel.h
  * @brief Cabecera de la clase Pixel.
  * @author Iván Rodríguez Chacón
+ * @author Javier Lama Jiménez
  */
 
 /**
@@ -30,7 +31,7 @@ public:
      * @param green Componente verde del píxel.
      * @param blue Componente azul del píxel.
      */
-    Pixel(const unsigned char &red = 0, const unsigned char &green = 0, const unsigned char &blue = 0);
+    explicit Pixel(const unsigned char &red = 0, const unsigned char &green = 0, const unsigned char &blue = 0);
 
     /**
      * @brief Establece los valores de los componentes del píxel.

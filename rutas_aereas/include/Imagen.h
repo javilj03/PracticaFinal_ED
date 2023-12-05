@@ -1,7 +1,3 @@
-//
-// Created by ivanf on 04/11/2023.
-//
-
 #ifndef PRACTICAFINAL_IMAGEN_H
 #define PRACTICAFINAL_IMAGEN_H
 
@@ -13,6 +9,7 @@
  * @file Imagen.h
  * @brief Este fichero contiene la cabecera de la clase Imagen y el enum Tipo_Pegado.
  * @author Iván Rodríguez Chacón
+ * @author Javier Lama Jiménez
  */
 
 /**
@@ -78,7 +75,7 @@ public:
      * @pre filas y  columnas deben ser mayores que 0 para asignar espacio en memoria a datos.
      * @post Asigna espacio en memoria para datos pero no inicializa sus valores.
      */
-    Imagen(const int &filas = 0, const int &columnas = 0, const int &filas_masc = 0,const int &columnas_mascara = 0);
+    explicit Imagen(const int &filas = 0, const int &columnas = 0, const int &filas_masc = 0,const int &columnas_mascara = 0);
 
     /**
      * @brief Constructor de copia de la clase.
@@ -95,7 +92,7 @@ public:
      * @param nombre_mascara Nombre del archivo de disco de la máscara (opcional).
      * @pre nombre_mascara debe ser un archivo de tipo PGM.
      */
-    Imagen(const char nombre[], const char *nombre_mascara = nullptr);
+    explicit Imagen(const char nombre[], const char *nombre_mascara = nullptr);
 
     /**
      * @brief Destructor de la clase.
@@ -162,7 +159,12 @@ public:
     const Pixel &operator()(const int &i, const int &j) const;
 
 };
-
-Imagen Rota(const Imagen &Io, double angulo);
+/**
+ * @brief Función que permite rotar la imagen
+ * @param Io Imagen a rotar
+ * @param angulo grados en radianes para rotar
+ * @return Imagen rotada
+ */
+Imagen Rota(const Imagen &Io, const double &angulo);
 
 #endif

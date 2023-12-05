@@ -17,13 +17,8 @@ Pais::Pais(const Pais &pais) {
     this->copiar(pais);
 }
 
-Pais::~Pais() {
-    this->liberar();
-}
-
 Pais &Pais::operator=(const Pais &pais) {
     if (this != &pais) {
-        this->liberar();
         this->copiar(pais);
     }
     return *this;
@@ -73,12 +68,7 @@ void Pais::copiar(const Pais &pais) {
         this->bandera = pais.bandera;
 }
 
-void Pais::liberar() {
-    /*if(this->nombre!= nullptr)
-      //  free(this->nombre);
-    if(this->path_bandera!= nullptr)
-       // free(this->path_bandera);*/
-}
+
 
 bool Pais::operator<(const Pais &pais) const {
     return this->nombre < pais.nombre;

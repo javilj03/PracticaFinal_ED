@@ -9,6 +9,7 @@
  * @file Pais.h Cabecera de la clase Pais
  * @brief Cabecera de la clase Pais.
  * @author Iván Rodríguez Chacón
+ * @author Javier Lama Jiménez
  */
 
 /**
@@ -32,7 +33,7 @@ private:
     string path_bandera;
 
     /**
-     * @brief Punto del pais usando un struct getPunto.
+     * @brief Punto del pais.
      */
     Punto punto;
 
@@ -50,11 +51,6 @@ private:
      */
     void copiar(const Pais &pais);
 
-    /**
-     * @brief Método auxiliar para el destructor que elimina la memoria dinámica reservada por los arrays de carácteres.
-     */
-    void liberar();
-
 public:
     /**
      * @brief Constructor por defecto de la clase.
@@ -64,18 +60,13 @@ public:
      * @param total_filas Numero de filas de la imagen
      * @param total_columnas Numero de columnas de la imagen
      */
-    Pais(const string &nombre="", const string &path_bandera="",const Punto &punto = Punto(0,0), const int &total_filas=768, const int &total_columnas=1536);
+     explicit Pais(const string &nombre="", const string &path_bandera="",const Punto &punto = Punto(0,0), const int &total_filas=768, const int &total_columnas=1536);
 
     /**
      * @brief Constructor de copia de la clase.
      * @param pais País a copiar.
      */
     Pais(const Pais &pais);
-
-    /**
-     * @brief Destructor de la clase.
-     */
-    ~Pais();
 
     /**
      * @brief Sobrecarga del operador de asignación.
@@ -142,7 +133,7 @@ public:
  * @param pais País a obtener.
  * @return Referencia al flujo de entrad para poder concatenarlo.
  */
-std::istream &operator>>(std::istream &os, Pais &pais);
+istream &operator>>(std::istream &os, Pais &pais);
 
 /**
  * @brief Sobrecarga del operador de salida.
@@ -150,7 +141,7 @@ std::istream &operator>>(std::istream &os, Pais &pais);
  * @param pais País a mostrar.
  * @return Referencia al flujo de salida para poder concatenarlo.
  */
-std::ostream &operator<<(std::ostream &os, const Pais &pais);
+ostream &operator<<(std::ostream &os, const Pais &pais);
 
 
 #endif

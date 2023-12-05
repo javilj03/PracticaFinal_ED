@@ -1,7 +1,5 @@
 #include "AlmacenRuta.h"
-#include <iostream>
-#include <sstream>
-#include <fstream>
+
 using namespace std;
 
 AlmacenRuta::AlmacenRuta(const char* fileName){
@@ -20,17 +18,11 @@ void AlmacenRuta::insert(const string& nombre, const Ruta &ruta) {
 }
 
 void AlmacenRuta::erase(const string &nombre) {
-   for (auto it = rutas.begin(); it != rutas.end(); ) {
-      if (it->first == nombre) {
-         it = rutas.erase(it);
-      } else {
-         ++it;
-      }
-   }
+   this->rutas.erase(nombre);
 }
 
 Ruta AlmacenRuta::getRuta(const string &nombre) {
-   return rutas[nombre];
+   return rutas.at(nombre);
 }
 
 istream &operator>>(istream &is, AlmacenRuta &almacenRuta) {
@@ -50,8 +42,40 @@ istream &operator>>(istream &is, AlmacenRuta &almacenRuta) {
 }
 
 ostream &operator<<(ostream &os, const AlmacenRuta &almacenRuta) {
-   for (AlmacenRuta::const_iterator it = almacenRuta.rutas.begin(); it != almacenRuta.rutas.end(); ++it) {
+   for (AlmacenRuta::const_iterator it= almacenRuta.cbegin();it!=almacenRuta.cend(); ++it)
       os << "Ruta " << it.getNombreRuta() << ":\n" << it.getRuta() << "\n";
-   }
+
    return os;
+}
+
+AlmacenRuta::iterator AlmacenRuta::begin() {
+    iterator i;
+    i.it = rutas.begin();
+    return i;
+}
+
+AlmacenRuta::iterator AlmacenRuta::end() {
+    iterator i;
+    i.it = rutas.end();
+    return i;
+}
+
+Ruta &AlmacenRuta::operator[](const string &nombre) {
+    return this->rutas[nombre];
+}
+
+const Ruta &AlmacenRuta::operator[](const string &nombre) const {
+    return this->rutas.at(nombre);
+}
+
+int AlmacenRuta::size() const {
+    return this->rutas.size();
+}
+
+AlmacenRuta::const_iterator AlmacenRuta::cbegin() const {
+    return {rutas.cbegin()};
+}
+
+AlmacenRuta::const_iterator AlmacenRuta::cend() const {
+    return {rutas.cend()};
 }

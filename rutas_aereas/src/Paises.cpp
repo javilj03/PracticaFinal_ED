@@ -9,7 +9,7 @@
 using namespace std;
 
 const string Paises::CABECERA = "# Latitud\t\t\tLongitud\t\t\tPais\t\tBandera";
-string Paises::dir_banderas = "";
+string Paises::dir_banderas;
 
 void Paises::insertar(const char *fileName) {
     ifstream file(fileName);
@@ -24,8 +24,6 @@ void Paises::insertar(const char *fileName) {
 
     file >> *this;
 
-
-
     file.close();
 }
 
@@ -38,7 +36,7 @@ bool Paises::empty() const {
     return this->datos.empty();
 }
 
-bool Paises::insert(Pais pais) {
+bool Paises::insert(const Pais& pais) {
     return this->datos.insert(pais).second;
 }
 
@@ -57,7 +55,7 @@ void Paises::insert(const Paises::Iterator &begin, const Paises::Iterator &end) 
         this->insert(*i);
 }
 
-bool Paises::Iterator::operator!=(Paises::Iterator it2) const {
+bool Paises::Iterator::operator!=(const Paises::Iterator& it2) const {
     return this->iterador != it2.iterador;
 }
 
@@ -84,7 +82,6 @@ istream &operator>>(istream &is, Paises &paises) {
         paises.insert(nuevoPais);
         nuevoPais = Pais("",paises.getDir_banderas());
     }
-
     return is;
 }
 
@@ -166,6 +163,6 @@ Paises::Iterator Paises::find(const Pais &pais) const {
     return {this->datos.find(pais)};
 }
 
-string Paises::getDir_banderas() const {
+string Paises::getDir_banderas() {
     return dir_banderas;
 }

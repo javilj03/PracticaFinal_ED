@@ -131,8 +131,7 @@ void Imagen::PutImagen(const int &i, const int &j, const Imagen &im, const Tipo_
         for (int fila = 0; fila < parada_filas; fila++)
             for (int columna = 0; columna < parada_columnas; columna++)
                 if (im.mascara == nullptr|| im.mascara[fila][columna] == 255)
-                    this->datos[i + fila][j + columna] = this->datos[i + fila][j + columna].media(
-                            im.datos[fila][columna]);
+                    this->datos[i + fila][j + columna] = this->datos[i + fila][j + columna].media(im.datos[fila][columna]);
     }
 }
 
@@ -158,7 +157,7 @@ unsigned char **Imagen::Mascara() {
     return this->mascara;
 }
 
-Imagen Rota(const Imagen &Io, double angulo) {
+Imagen Rota(const Imagen &Io, const double &angulo) {
     double rads = angulo;
     double coseno = cos(angulo);
     double seno = sin(angulo);
