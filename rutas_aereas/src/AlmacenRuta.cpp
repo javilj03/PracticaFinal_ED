@@ -10,6 +10,7 @@ AlmacenRuta::AlmacenRuta(const char* fileName){
         cerr<<"Error al cargar el fichero de datos de las rutas."<< endl;
         exit(1);
     }
+    this->rutas.clear();
     entradaRutas>>*this;
     entradaRutas.close();
 }
@@ -33,26 +34,18 @@ Ruta AlmacenRuta::getRuta(const string &nombre) {
 }
 
 istream &operator>>(istream &is, AlmacenRuta &almacenRuta) {
-   string linea;
-
-   getline(is, linea);
-
-   while (getline(is, linea)) {
-      if (linea.empty()) {
-         continue;
-      }
-
-      istringstream iss(linea);
-      string rutaIdentificador;
-      iss >> rutaIdentificador;
-
-      if (rutaIdentificador[0] == 'R' && isdigit(rutaIdentificador[1])) {
-         Ruta ruta;
-         iss >> ruta;
-         almacenRuta.insert(rutaIdentificador, ruta);
-      }
+   string cabecera;
+   is>>cabecera;
+   if(cabecera!="#Rutas"){
+       cerr<<"La cabecera es incorrecta."<< endl;
+       exit(1);
    }
-
+   Ruta ruta;
+   string id;
+   while(is>>id){
+       is>>ruta;
+       almacenRuta.insert(id,ruta);
+   }
    return is;
 }
 

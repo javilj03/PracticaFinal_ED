@@ -14,6 +14,7 @@ private:
     * @brief Map con las rutas
     */
     map<string, Ruta> rutas;
+
 public:
     /**
     * @brief Constructor de la clase

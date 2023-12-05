@@ -93,6 +93,9 @@ public:
        i.it = puntos.end();
        return i;
     }
+    void insert(const int &pos,const Punto &punto){
+        puntos.insert(puntos.begin()+pos,punto);
+    }
 
     /**
      * @brief Elimina un punto de la ruta
