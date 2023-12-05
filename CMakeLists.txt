@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(practicafinal)
 
 set(CMAKE_CXX_STANDARD 14)
-##set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 set(BASE_FOLDER rutas_aereas)
 
 include_directories(${BASE_FOLDER}/include)

@@ -131,12 +131,12 @@ public:
      * @brief Funcion que devuelve un iterador constante al inicio del set .
      * @return const_Iterator con el inicio del set.
      */
-    const_Iterator begin() const;
+    const_Iterator cbegin() const;
     /**
      * @brief Funcion que devuelve un iterador constante al final del set .
      * @return const_Iterator con el final del set.
      */
-    const_Iterator end() const;
+    const_Iterator cend() const;
     /**
      * @brief Funcion que devuelve un iterador al inicio del set .
      * @return Iterator con el inicio del set.
@@ -179,6 +179,12 @@ public:
      * @brief Funcion que vacía el set.
      */
     void clear();
+    /**
+     * @brief Funcion que busca un pais correspondiente al punto dado en el set.
+     * @param punto Punto a buscar.
+     * @return un const_iterador a la posicion del pais en el set. En caso de no encontrarse devuelve end().
+     */
+    const_Iterator find(const Punto &punto) const;
     /**
      * @brief Funcion que busca un pais en el set.
      * @param pais Pais a buscar.

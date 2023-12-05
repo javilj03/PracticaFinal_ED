@@ -25,24 +25,23 @@ int main(int argc, char *argv[]) {
 
     //Bucle que recorre cada punto y situa sus banderas en el mapa si pertenecen a un pais
     for (int i = 0; i < ruta.size(); i++) {
-        bool encontrado = false;
-        for (Paises::Iterator it = paises.begin(); it != paises.end() && !encontrado; it++)
-            if (!(i % 2) && ruta[i].getX() == (*it).getPunto().getX() && ruta[i].getY() == (*it).getPunto().getY()) {
+        Paises::const_Iterator it = paises.find(ruta[i]);
+            if (!(i % 2) && it != paises.cend()) {
                 double punto_medio_x = (*it).Bandera().Filas() / 2.0;
                 double punto_medio_y = (*it).Bandera().Columnas() / 2.0;
                 mapa.PutImagen((*it).getPunto().getX() - punto_medio_x, (*it).getPunto().getY() - punto_medio_y,
                                (*it).Bandera(), BLENDING);
-                encontrado = true;
             }
 
         //Descomentar esta parte para obtener aviones de llegada a cada pais
+        /*
         if(!(i%2) && i != 0 && i != ruta.getPuntos().size()-1) {
 
             double rot_radianes = atan2(ruta[i].getX() - ruta[i-1].getX(), ruta[i].getY() - ruta[i-1].getY());
             //Rotar aviones y pegarlos
             Imagen avion_rotado = Rota(avion, rot_radianes);
             mapa.PutImagen(ruta[i].getX()-avion_rotado.Filas()/2, ruta[i].getY()-avion_rotado.Columnas()/2, avion_rotado, OPACO);
-        }
+        }*/
         //Calcular radianes para obtener rotacion
         double pos_primero = i + 1 >= ruta.getPuntos().size() ? i - 1 : i;
         double pos_segundo = i + 1 >= ruta.getPuntos().size() ? i : i + 1;

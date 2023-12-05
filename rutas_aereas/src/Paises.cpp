@@ -68,7 +68,7 @@ Pais Paises::Iterator::operator*() const {
 }
 
 ostream &operator<<(ostream &os, const Paises &paises) {
-    for (Paises::const_Iterator i = paises.begin(); i != paises.end(); i++)
+    for (Paises::const_Iterator i = paises.cbegin(); i != paises.cend(); i++)
         os << std::setprecision(20) << *i << endl;
     return os;
 }
@@ -94,8 +94,8 @@ Paises::Iterator::Iterator(const set<Pais>::iterator &it) {
 }
 
 
-Paises::const_Iterator Paises::begin() const {
-    return {this->datos.begin()};
+Paises::const_Iterator Paises::cbegin() const {
+    return {this->datos.cbegin()};
 }
 
 Paises::Iterator Paises::begin() {
@@ -106,8 +106,8 @@ Paises::Iterator Paises::end() {
     return {this->datos.end()};
 }
 
-Paises::const_Iterator Paises::end() const {
-    return {this->datos.end()};
+Paises::const_Iterator Paises::cend() const {
+    return {this->datos.cend()};
 }
 
 void Paises::erase(const Pais &pais) {
@@ -158,7 +158,12 @@ void Paises::save(const char *fileName) const {
     file << *this;
     file.close();
 }
-
+Paises::const_Iterator Paises::find(const Punto &punto) const {
+    for(Paises::const_Iterator i = this->cbegin(); i != this->cend(); i++)
+        if((*i).getPunto() == punto)
+            return i;
+    return this->cend();
+}
 Paises::Iterator Paises::find(const Pais &pais) const {
     return {this->datos.find(pais)};
 }
