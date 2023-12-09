@@ -5,7 +5,7 @@
 
 using namespace std;
 /**
- * @file getPunto.h
+ * @file Punto.h
  * @brief Cabecera de la clase getPunto.
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez

@@ -1,0 +1,54 @@
+/*! \mainpage Rutas aéreas
+
+# Introducción
+Esta práctica desarrolla un software para ayudar a una compañía aerea
+poder visualizar sus rutas. En concreto la empresa aérea quiere visualizar en un mapa del mundo
+rutas con un código determinado.
+
+Recibiendo los datos necesarios este programa muestra en un mapa la ruta indicada en un mapa, mostrando
+los paises en los que hace paradas y varios aviones para mostrar las trayectorias.
+
+En lo respectivo al desarrollo del programa se crean diferentes clases usando las mejores estructuras de
+datos para encontrar la solución más eficiente.
+
+## Programa principal
+El programa principal **ruta_aerea.cpp** es el encargado de la ejecución de todo el proyecto.
+> __ruta_aerea__ \<Datos de paises\> \<mapa global\> \<directorio banderas\> \<almacén rutas\> \<avión\> \<mascara avión\> \<dir salida imagen\>
+
+## Desarrollo de clases
+Todas las clases creadas están pensadas de la forma más eficiente y usando la mejor metodología encontrada.
+Las clases que contengan atributos de TDA no lineales tienen ademas creadas clases iteradoras tanto Iterator como const_iterator si es necesario.
+
+
+### Clase Punto
+Esta clase crea un objeto con dos atributos, *X* e *Y* que representan las coordenadas en la imagen.
+Además de los getter y setter necesarios hemos creado dos métodos que nos permiten transformar el punto según interese,
+estos métodos son **coordenadas_aPunto** y **punto_aCoordenadas** que realizan las acciones de transformar el punto según se necesite.
+
+### Clase Ruta
+La clase Ruta tiene un vector que almacena todos los puntos de una ruta.
+En cuanto al desarrollo de esta clase sus métodos permiten tratamiento del vector como se necesite.
+
+### Clase AlmacenRuta
+Esta clase tiene un map<string, Ruta> que contiene cada una de las rutas recibidas en el fichero.
+Para el almacenamiento de estas rutas uno de los constructores permite la entrada de un fichero directamente
+para guardar sus datos.
+
+Al igual que la clase Ruta esta clase tiene todos los métodos necesarios para la edicion de los datos del map.
+
+### Clase Pais
+Esta clase almacena todos los datos necesarios de un país como son el nombre, la ruta de la imagen de la bandera
+y su ubicacion en el mapa(Punto).
+
+### Clase Paises
+Tiene un set de objetos de la clase Pais. Esta clase tiene un constructor que puede recibir por parametro el fichero del que se obtienen los datos
+de los paises a insertar.
+
+### Clase Pixel
+
+### Clase Imagen
+
+### Clase ImagenES
+
+
+*/
