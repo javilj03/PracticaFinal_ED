@@ -13,6 +13,11 @@ using namespace std;
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
  */
+
+/**
+ * @brief Clase que almacena todas las rutas de un fichero
+ * @class AlmacenRuta
+ */
 class AlmacenRuta {
 private:
     /**
@@ -27,7 +32,7 @@ public:
     AlmacenRuta() = default;
     /**
      * @brief Constructor a partir de la ruta del fichero
-     * @param ruta FileName de la ruta del fichero de datos
+     * @param fileName Nombre de la ruta del fichero de datos
      */
      explicit AlmacenRuta(const char* fileName);
     /**
@@ -50,6 +55,12 @@ public:
     */
     Ruta getRuta(const string &nombre);
 
+    /**
+     * @brief Sobrecarga del operador de salida
+     * @param is Flujo de entrada.
+     * @param almacenRuta Objeto donde alamcenar los datos.
+     * @return Referencia al flujo de entrada para permitir la concatenación.
+     */
     friend istream &operator>>(std::istream &is, AlmacenRuta &almacenRuta);
 
 

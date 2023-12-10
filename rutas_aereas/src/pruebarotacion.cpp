@@ -15,6 +15,8 @@ using namespace std;
  * @brief Rota una Imagen.
  * @param Io Imagen de entrada.
  * @param angulo Angulo de rotación.
+ * @param filas Numero de filas de la Imagen.
+ * @param columnas Numero de columnas de la Imagen.
  * @return La Imagen rotada.
  */
 unsigned char** Rota(unsigned char **Io, double angulo, int filas, int columnas) {

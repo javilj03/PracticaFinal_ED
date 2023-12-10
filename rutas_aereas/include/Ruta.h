@@ -7,7 +7,7 @@
 
 using namespace std;
 /**
- * @file Rutas.h Cabecera de la clase Rutas
+ * @file Ruta.h Cabecera de la clase Rutas
  * @brief Cabecera de la clase Rutas.
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
@@ -131,7 +131,7 @@ public:
 
     /**
      * @brief Elimina un punto de la ruta
-     * @param iterator Objeto punto a eliminar
+     * @param it Objeto punto a eliminar
      */
     void erase(iterator it);
     /**

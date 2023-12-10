@@ -13,6 +13,11 @@
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
  */
+
+/**
+ * @brief Clase que almacena todos los paises de un fichero
+ * @class Paises
+ */
 class Paises {
 private:
     /**
@@ -37,9 +42,14 @@ public:
     /**
      * @brief Constructor a partir de un fichero.
      * @param fileName Ruta del fichero a leer.
+     * @param dir_banderas Directorio de las banderas de los paises.
      */
     Paises(const char *fileName, const char *dir_banderas = "");
 
+    /**
+     * @brief Método estático que devuelve el directorio de las banderas de los países.
+     * @return String con el directorio de las banderas de los países.
+     */
     static string getDir_banderas() ;
     /**
      * @brief Clase iteradora que permite recorrer el set de paises.

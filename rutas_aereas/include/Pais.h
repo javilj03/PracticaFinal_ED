@@ -55,7 +55,7 @@ public:
     /**
      * @brief Constructor por defecto de la clase.
      * @param nombre Nombre del país.
-     * @param coordenadas getPunto del país.
+     * @param punto Punto donde se encuentra el país.
      * @param path_bandera Ruta hacia la bandera del país.
      * @param total_filas Numero de filas de la imagen
      * @param total_columnas Numero de columnas de la imagen
@@ -117,7 +117,10 @@ public:
      */
     Imagen &Bandera();
 
-
+    /**
+     * @brief Método que devuelve el tamaño del mapa.
+     * @return Pair con el tamaño del mapa. El primero es las filas y el segundo las columnas.
+     */
     pair<int,int> Tamano_mapa() const;
     /**
      * @brief Sobrecarga del operador menor que.

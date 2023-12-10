@@ -9,7 +9,12 @@
 
 using namespace std;
 
-
+/**
+ * @brief Leer el tipo de la imagen.
+ * @param f entrada de flujo.
+ * @return El tipo de imagen.
+ * @see TipoImagen
+ */
 TipoImagen LeerTipo(ifstream &f) {
     char c1, c2;
     TipoImagen res = IMG_DESCONOCIDO;
@@ -33,7 +38,12 @@ TipoImagen LeerTipo(ifstream &f) {
 }
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Leer el tipo de la imagen.
+ * @param nombre nombre del archivo.
+ * @return Tipo de la imagen.
+ * @see TipoImagen
+ */
 TipoImagen LeerTipoImagen(const char nombre[]) {
     ifstream f(nombre, std::ios::binary);
     return LeerTipo(f);
@@ -41,7 +51,11 @@ TipoImagen LeerTipoImagen(const char nombre[]) {
 
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Saltar los comentarios de un archivo.
+ * @param f flujo de entrada.
+ * @return El siguiente carácter que no es un espacio en blanco.
+ */
 char SaltarSeparadores(ifstream &f) {
     char c;
     do {
@@ -52,7 +66,13 @@ char SaltarSeparadores(ifstream &f) {
 }
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Leer la cabecera de una imagen.
+ * @param f entrada de flujo.
+ * @param filas Filas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @param columnas Columnas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @return True si pudo leerla, false en caso contrario.
+ */
 bool LeerCabecera(ifstream &f, int &filas, int &columnas) {
     int maxvalor;
 
@@ -68,7 +88,14 @@ bool LeerCabecera(ifstream &f, int &filas, int &columnas) {
 }
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Leer el tipo de la imagen.
+ * @param nombre nombre del archivo.
+ * @param filas Filas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @param columnas Columnas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @return Tipo de imagen.
+ * @see TipoImagen
+ */
 TipoImagen LeerTipoImagen(const char nombre[], int &filas, int &columnas) {
     TipoImagen tipo;
     filas = columnas = 0;
@@ -85,7 +112,14 @@ TipoImagen LeerTipoImagen(const char nombre[], int &filas, int &columnas) {
 
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Leer una imagen de tipo PPM.
+ * @param nombre Nombre del archivo.
+ * @param filas Filas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @param columnas Columnas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @param buffer Buffer donde almacenar la imagen.
+ * @return True si tuvo éxito, false en caso contrario.
+ */
 bool LeerImagenPPM(const char nombre[], int &filas, int &columnas, unsigned char buffer[]) {
     bool exito = false;
     filas = 0;
@@ -104,7 +138,14 @@ bool LeerImagenPPM(const char nombre[], int &filas, int &columnas, unsigned char
 
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Leer una imagen de tipo PGM.
+ * @param nombre Nombre del archivo.
+ * @param filas Filas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @param columnas Columnas de la imagen (o más bien donde se guarda este dato ya que esta referenciado).
+ * @param buffer Buffer donde almacenar la imagen.
+ * @return True si tuvo éxito, false en caso contrario.
+ */
 bool LeerImagenPGM(const char nombre[], int &filas, int &columnas, unsigned char buffer[]) {
     bool exito = false;
     filas = 0;
@@ -121,7 +162,14 @@ bool LeerImagenPGM(const char nombre[], int &filas, int &columnas, unsigned char
 
 
 // _____________________________________________________________________________
-
+/**
+ * @brief Escribir una imagen de tipo PPM.
+ * @param nombre Nombre del archivo.
+ * @param datos Buffer donde se almacena la imagen.
+ * @param filas Filas de la imagen.
+ * @param columnas Columnas de la imagen.
+ * @return True si tuvo éxito, false en caso contrario.
+ */
 bool EscribirImagenPPM(const char nombre[], const unsigned char datos[], int filas, int columnas) {
     ofstream f(nombre, std::ios::binary);
     bool res = true;
@@ -136,7 +184,14 @@ bool EscribirImagenPPM(const char nombre[], const unsigned char datos[], int fil
     return res;
 }
 // _____________________________________________________________________________
-
+/**
+ * @brief Escribir una imagen de tipo PGM.
+ * @param nombre Nombre del archivo.
+ * @param datos Buffer donde se almacena la imagen.
+ * @param filas Filas de la imagen.
+ * @param columnas Columnas de la imagen.
+ * @return True si tuvo éxito, false en caso contrario.
+ */
 bool EscribirImagenPGM(const char nombre[], const unsigned char datos[], int filas, int columnas) {
     ofstream f(nombre, std::ios::binary);
     bool res = true;

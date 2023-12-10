@@ -72,6 +72,8 @@ public:
      * @brief Constructor por defecto de la clase.
      * @param filas Filas de la Imagen.
      * @param columnas Columnas de la Imagen.
+     * @param filas_masc Filas de la máscara de la Imagen.
+     * @param columnas_mascara Columnas de la máscara de la Imagen.
      * @pre filas y  columnas deben ser mayores que 0 para asignar espacio en memoria a datos.
      * @post Asigna espacio en memoria para datos pero no inicializa sus valores.
      */
@@ -82,8 +84,15 @@ public:
      * @param im Imagen a copiar.
      */
     Imagen(const Imagen &im);
-
+    /**
+     * @brief Función constante que devuelve la máscara de la Imagen.
+     * @return Máscara de la Imagen como un puntero a puntero de unsigned char.
+     */
     unsigned char** Mascara() const;
+    /**
+     * @brief Función que devuelve la máscara de la Imagen.
+     * @return Máscara de la Imagen como un puntero a puntero de unsigned char.
+     */
     unsigned char** Mascara();
 
     /**
@@ -92,7 +101,7 @@ public:
      * @param nombre_mascara Nombre del archivo de disco de la máscara (opcional).
      * @pre nombre_mascara debe ser un archivo de tipo PGM.
      */
-    explicit Imagen(const char nombre[], const char *nombre_mascara = nullptr);
+    explicit Imagen(const char *nombre, const char *nombre_mascara = nullptr);
 
     /**
      * @brief Destructor de la clase.
