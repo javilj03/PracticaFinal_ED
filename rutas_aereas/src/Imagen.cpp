@@ -35,9 +35,13 @@ void Imagen::copiar(const Imagen &im) {
 }
 
 void Imagen::liberar() {
-    if (datos != nullptr) {
-        delete[] datos[0];
-        delete[] datos;
+    if (this->datos != nullptr) {
+        delete[] this->datos[0];
+        delete[] this->datos;
+    }
+    if (this->mascara != nullptr) {
+        delete[] this->mascara[0];
+        delete[] this->mascara;
     }
 }
 
@@ -89,6 +93,10 @@ void Imagen::LeerMascara(const char *nombre) {
     unsigned char *aux = new unsigned char[filas_mascara * columnas_mascara];
     LeerImagenPGM(nombre, filas_mascara, columnas_mascara, aux);
 
+    if (this->mascara != nullptr) {
+        delete[] this->mascara[0];
+        delete[] this->mascara;
+    }
     this->mascara = new unsigned char *[filas_mascara];
     this->mascara[0] = aux;
     for (int i = 1; i < filas_mascara; i++)
