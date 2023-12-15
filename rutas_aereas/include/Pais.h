@@ -17,8 +17,8 @@
  */
 class Pais {
 private:
-    static int total_filas;
-    static int total_columnas;
+    int total_filas;
+    int total_columnas;
     /**
      * @brief Imagen de la bandera del pais. Esta inicializado a null hasta que se necesite la imagen por primera vez.
      */

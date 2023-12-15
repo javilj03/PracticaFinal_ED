@@ -104,7 +104,7 @@ public:
  * @return getPunto de la imagen al que equivalen las punto.
  */
 Punto
-coordenadas_aPunto(const double &latitud, const double &longitud, const int &totalfilas, const int &totalcolumnas);
+coordenadas_aPunto(const double &latitud, const double &longitud);
 
 /**
  * @brief Pasa de punto a las coordenadas originales
@@ -113,7 +113,7 @@ coordenadas_aPunto(const double &latitud, const double &longitud, const int &tot
  * @param totalcolumnas total de columnas de la imagen
  * @return pair<double x,double y>
  */
-pair<double, double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas);
+pair<double, double> punto_aCoordenadas(const Punto &punto);
 
 /**
  * @brief Sobrecarga del operador de salida.

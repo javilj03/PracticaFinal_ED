@@ -55,8 +55,8 @@ ostream &operator<<(std::ostream &os, const Ruta &ruta) {
 
     os << " " << (ruta.size() / 2) + 1 << " ";
     for (int i = 0; i < ruta.size(); i += 2) {
-        os << "(" << punto_aCoordenadas(ruta[i], 768, 1536).first << ","
-           << punto_aCoordenadas(ruta[i], 768, 1536).second << ")";
+        os << "(" << punto_aCoordenadas(ruta[i]).first << ","
+           << punto_aCoordenadas(ruta[i]).second << ")";
     }
 
     return os;

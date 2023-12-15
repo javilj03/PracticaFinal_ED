@@ -32,9 +32,9 @@ void Punto::setTotalColumnas(const int &totalColumnas) {
     Punto::total_columnas = totalColumnas;
 }
 Punto
-coordenadas_aPunto(const double &latitud, const double &longitud, const int &totalfilas, const int &totalcolumnas) {
-    double columna = (totalcolumnas / 360.0) * (180 + longitud);
-    double fila = (totalfilas / 180.0) * (90 - latitud);
+coordenadas_aPunto(const double &latitud, const double &longitud) {
+    double columna = (Punto::getTotalColumnas() / 360.0) * (180 + longitud);
+    double fila = (Punto::getTotalFilas() / 180.0) * (90 - latitud);
     return {fila, columna};
 }
 
@@ -48,13 +48,13 @@ istream &operator>>(istream &is, Punto &punto) {
     char extra;
     double auxX, auxY;
     is >> extra >> auxX >> extra >> auxY >> extra;
-    punto = coordenadas_aPunto(auxX, auxY, punto.getTotalFilas(), punto.getTotalColumnas());
+    punto = coordenadas_aPunto(auxX, auxY);
     return is;
 }
 
-pair<double, double> punto_aCoordenadas(const Punto &punto, const int &totalfilas, const int &totalcolumnas) {
-    double latitud = 90 - (punto.getX() / ((double) totalfilas / 180.0));
-    double longitud = (punto.getY() / ((double) totalcolumnas / 360.0)) - 180;
+pair<double, double> punto_aCoordenadas(const Punto &punto) {
+    double latitud = 90 - (punto.getX() / ((double) Punto::getTotalFilas() / 180.0));
+    double longitud = (punto.getY() / ((double) Punto::getTotalColumnas() / 360.0)) - 180;
     return {latitud, longitud};
 }
 

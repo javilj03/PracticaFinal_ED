@@ -14,10 +14,10 @@ int main(int argc, char *argv[]) {
                 << endl;
         exit(1);
     }
-    Paises paises(argv[1], argv[3]);
     Imagen mapa(argv[2]);
     Punto::setTotalFilas(mapa.Filas());
     Punto::setTotalColumnas(mapa.Columnas());
+    Paises paises(argv[1], argv[3]);
     AlmacenRuta almacenRuta(argv[4]);
     Imagen avion(argv[5], argv[6]);
     string codigo_ruta;
