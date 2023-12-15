@@ -17,8 +17,6 @@
  */
 class Pais {
 private:
-    int total_filas;
-    int total_columnas;
     /**
      * @brief Imagen de la bandera del pais. Esta inicializado a null hasta que se necesite la imagen por primera vez.
      */
@@ -41,7 +39,7 @@ private:
      * @brief Función que asigna los valores de los atributos de la clase.
      * @param nombre Array de carácteres que contiene el nombre del pais.
      * @param path_bandera Array de carácteres que contiene la ruta de la bandera del país.
-     * @param coordenadas getPunto que contiene las punto del país.
+     * @param punto Punto que contiene las punto del país.
      */
     void asignar(const string &nombre, const string &path_bandera, const Punto &punto);
 
@@ -57,10 +55,8 @@ public:
      * @param nombre Nombre del país.
      * @param punto Punto donde se encuentra el país.
      * @param path_bandera Ruta hacia la bandera del país.
-     * @param total_filas Numero de filas de la imagen
-     * @param total_columnas Numero de columnas de la imagen
      */
-     explicit Pais(const string &nombre="", const string &path_bandera="",const Punto &punto = Punto(0,0), const int &total_filas=768, const int &total_columnas=1536);
+     explicit Pais(const string &nombre="", const string &path_bandera="",const Punto &punto = Punto(0,0));
 
     /**
      * @brief Constructor de copia de la clase.
@@ -117,11 +113,6 @@ public:
      */
     Imagen &Bandera();
 
-    /**
-     * @brief Método que devuelve el tamaño del mapa.
-     * @return Pair con el tamaño del mapa. El primero es las filas y el segundo las columnas.
-     */
-    pair<int,int> Tamano_mapa() const;
     /**
      * @brief Sobrecarga del operador menor que.
      * @param pais País a comparar.

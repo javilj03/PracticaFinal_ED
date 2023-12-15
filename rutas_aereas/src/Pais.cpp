@@ -5,10 +5,7 @@
  * @brief Implementación de la clase Pais.
  */
 
-Pais::Pais(const string &nombre, const string &path_bandera,const Punto &punto, const int &total_filas, const int &total_columnas) {
-
-    Pais::total_filas = total_filas;
-    Pais::total_columnas = total_columnas;
+Pais::Pais(const string &nombre, const string &path_bandera,const Punto &punto) {
     this->asignar(nombre, path_bandera, punto);
 }
 
@@ -80,9 +77,6 @@ istream &operator>>(istream &is, Pais &pais) {
     pais = Pais(nombre, pais.PathBandera()+path_bandera, coordenadas_aPunto(latitud, longitud));
 
     return is;
-}
-pair<int,int> Pais::Tamano_mapa() const {
-    return {Punto::getTotalFilas(),Punto::getTotalColumnas()};
 }
 
 std::ostream &operator<<(ostream &os, const Pais &pais) {
