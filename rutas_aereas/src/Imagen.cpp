@@ -1,5 +1,5 @@
 #include "Imagen.h"
-
+#include "Punto.h"
 /**
  * @file Imagen.cpp
  * @brief Implementación de la clase Imagen.
@@ -47,6 +47,7 @@ void Imagen::liberar() {
 
 Imagen::Imagen(const int &filas, const int &columnas, const int &filas_mascara, const int &columnas_mascara) {
     asignarMemoria(filas, columnas);
+
     if(filas_mascara!=0 && columnas_mascara!=0){
         this->mascara = new unsigned char *[filas_mascara];
         this->mascara[0] = new unsigned char[filas_mascara * columnas_mascara]{0};

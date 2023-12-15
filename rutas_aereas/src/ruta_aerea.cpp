@@ -16,13 +16,14 @@ int main(int argc, char *argv[]) {
     }
     Paises paises(argv[1], argv[3]);
     Imagen mapa(argv[2]);
+    Punto::setTotalFilas(mapa.Filas());
+    Punto::setTotalColumnas(mapa.Columnas());
     AlmacenRuta almacenRuta(argv[4]);
     Imagen avion(argv[5], argv[6]);
     string codigo_ruta;
     cout << "Elija ruta: " << endl << almacenRuta << endl;
     cin >> codigo_ruta;
     Ruta ruta = almacenRuta.getRuta(codigo_ruta);
-
     //Bucle que recorre cada punto y situa sus banderas en el mapa si pertenecen a un pais
     for (int i = 0; i < ruta.size(); i++) {
         Paises::const_Iterator it = paises.find(ruta[i]);

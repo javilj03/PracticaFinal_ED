@@ -62,13 +62,23 @@ public:
      * @brief Devuelve el total de columnas del mapa.
      * @return Total de columnas del mapa.
      */
-    int getTotalColumnas() const;
+    static int getTotalColumnas() ;
 
     /**
      * @brief Devuelve el total de filas del mapa.
      * @return Total de filas del mapa.
      */
-    int getTotalFilas() const;
+    static int getTotalFilas() ;
+
+    /**
+     * @brief Metodo para modificar el total de filas del mapa.
+     */
+    static void setTotalFilas(const int &totalFilas);
+
+    /**
+     * @brief Metodo para modificar el total de columnas del mapa.
+     */
+    static void setTotalColumnas(const int &totalColumnas);
 
     /**
      * @brief Sobrecarga del operador de comparación.

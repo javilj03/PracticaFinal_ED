@@ -78,7 +78,7 @@ istream &operator>>(istream &is, Pais &pais) {
     double latitud, longitud;
     string nombre, path_bandera;
     is >> latitud >> longitud >> nombre >> path_bandera;
-    pais = Pais(nombre, pais.PathBandera()+path_bandera, coordenadas_aPunto(latitud, longitud, pais.Tamano_mapa().first,pais.Tamano_mapa().second));
+    pais = Pais(nombre, pais.PathBandera()+path_bandera, coordenadas_aPunto(latitud, longitud, Punto::getTotalFilas(),Punto::getTotalColumnas()));
 
     return is;
 }

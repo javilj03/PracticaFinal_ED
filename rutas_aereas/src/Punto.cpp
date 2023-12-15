@@ -6,8 +6,8 @@
  * @author Iván Rodríguez Chacón
  * @author Javier Lama Jiménez
  */
-int Punto::total_filas = 768;
-int Punto::total_columnas = 1536;
+int Punto::total_filas = 0;
+int Punto::total_columnas = 0;
 
 Punto::Punto(double x, double y) {
     this->x = x;
@@ -25,7 +25,12 @@ double Punto::getY() const {
 bool Punto::operator==(const Punto &punto2) const {
     return this->x == punto2.x && this->y == punto2.y;
 }
-
+void Punto::setTotalFilas(const int &totalFilas) {
+    Punto::total_filas = totalFilas;
+}
+void Punto::setTotalColumnas(const int &totalColumnas) {
+    Punto::total_columnas = totalColumnas;
+}
 Punto
 coordenadas_aPunto(const double &latitud, const double &longitud, const int &totalfilas, const int &totalcolumnas) {
     double columna = (totalcolumnas / 360.0) * (180 + longitud);
@@ -61,10 +66,10 @@ double &Punto::getY() {
     return this->y;
 }
 
-int Punto::getTotalColumnas() const {
+int Punto::getTotalColumnas() {
     return Punto::total_columnas;
 }
 
-int Punto::getTotalFilas() const {
+int Punto::getTotalFilas() {
     return Punto::total_filas;
 }
