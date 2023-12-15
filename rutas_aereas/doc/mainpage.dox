@@ -15,6 +15,8 @@ datos para encontrar la solución más eficiente.
 El programa principal **ruta_aerea.cpp** es el encargado de la ejecución de todo el proyecto.
 > __ruta_aérea__ \<Datos de países\> \<mapa global\> \<directorio banderas\> \<almacén rutas\> \<avión\> \<mascara avión\> \<dir salida imagen\>
 
+@image html Ruta1.png "Salida al seleccionar la ruta 1"
+
 ## Desarrollo de clases
 Todas las clases creadas están pensadas de la forma más eficiente y usando la mejor metodología encontrada.
 Las clases que contengan atributos de TDA no lineales tienen ademas creadas clases iteradoras tanto Iterator como const_iterator si es necesario.
@@ -65,5 +67,14 @@ estas son esenciales para el funcionamiento del programa. No han sido manipulada
 en el caso de que la ruta sea incorrecta el error que dara será "La imagen no tiene el formato PPM" debido a que a la hora de leer la cabecera de la imagen el formato
 que se obtiene es "formato desconocido", esto se podría arreglar introduciento un else al if(f) en vez de devolviendo tipo de imagen desconocido.
 Sin embargo como he dicho este archivo no ha sido modificado y es idéntico al proporcionado por el profesor.
+
+@htmlonly
+<div id = "footer">
+  <p>Hecho por: <a href="https://github.com/javilj03">Javier Lama Jiménez</a> y <a href="https://github.com/IvanFrison">Ivan Rodríguez Chacón</a></p>
+  <p><a href="https://github.com/javilj03/PracticaFinal_ED">Repositorio</a></p>
+</div>
+@endhtmlonly
+
+
 
 */
