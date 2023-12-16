@@ -4,6 +4,7 @@
  * @file Imagen.cpp
  * @brief Implementación de la clase Imagen.
  * @author Iván Rodríguez Chacón
+ * @aurhor Javier Lama Jiménez
  */
 
 using namespace std;

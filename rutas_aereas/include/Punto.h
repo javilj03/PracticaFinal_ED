@@ -72,11 +72,13 @@ public:
 
     /**
      * @brief Metodo para modificar el total de filas del mapa.
+     * @param totalFilas Nuevo total de filas del mapa.
      */
     static void setTotalFilas(const int &totalFilas);
 
     /**
      * @brief Metodo para modificar el total de columnas del mapa.
+     * @param totalColumnas Nuevo total de columnas del mapa.
      */
     static void setTotalColumnas(const int &totalColumnas);
 
@@ -99,8 +101,6 @@ public:
  * @brief Función que pasa una latitud y una longitud a un punto de la imagen.
  * @param latitud Coordenada latitud.
  * @param longitud Coordenada longitud.
- * @param totalfilas Total de filas de la imagen.
- * @param totalcolumnas Total de columnas de la imagen.
  * @return getPunto de la imagen al que equivalen las punto.
  */
 Punto
@@ -109,8 +109,6 @@ coordenadas_aPunto(const double &latitud, const double &longitud);
 /**
  * @brief Pasa de punto a las coordenadas originales
  * @param punto punto a pasar a coordenadas
- * @param totalfilas total de las filas de la imagen
- * @param totalcolumnas total de columnas de la imagen
  * @return pair<double x,double y>
  */
 pair<double, double> punto_aCoordenadas(const Punto &punto);

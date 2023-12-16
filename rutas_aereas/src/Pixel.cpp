@@ -1,4 +1,10 @@
 #include "Pixel.h"
+/**
+ * @file Pixel.cpp
+ * @brief Implementación de la clase Pixel.
+ * @author Javier Lama Jiménez
+ * @author Iván Rodríguez Chacón
+ */
 
 Pixel::Pixel(const unsigned char &red, const unsigned char &green, const unsigned char &blue) {
     this->red = red;

@@ -3,6 +3,8 @@
 /**
  * @file Pais.cpp
  * @brief Implementación de la clase Pais.
+ * @author Javier Lama Jiménez
+ * @author Iván Rodríguez Chacón
  */
 
 Pais::Pais(const string &nombre, const string &path_bandera,const Punto &punto) {

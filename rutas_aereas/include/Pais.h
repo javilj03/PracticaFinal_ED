@@ -53,8 +53,8 @@ public:
     /**
      * @brief Constructor por defecto de la clase.
      * @param nombre Nombre del país.
-     * @param punto Punto donde se encuentra el país.
      * @param path_bandera Ruta hacia la bandera del país.
+     * @param punto Punto donde se encuentra el país.
      */
      explicit Pais(const string &nombre="", const string &path_bandera="",const Punto &punto = Punto(0,0));
 
@@ -103,7 +103,7 @@ public:
 
     /**
      * @brief Método que devuelve el punto del país.
-     * @return Referencia a las punto del país.
+     * @return Objeto punto del País.
      */
     Punto &getPunto();
 

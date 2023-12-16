@@ -2,6 +2,12 @@
 #include <algorithm>
 #include "Ruta.h"
 #include "Punto.h"
+/**
+ * @file Ruta.cpp
+ * @brief Implementación de la clase Ruta.
+ * @author Javier Lama Jiménez
+ * @author Iván Rodríguez Chacón
+ */
 
 using namespace std;
 

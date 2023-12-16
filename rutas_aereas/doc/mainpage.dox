@@ -13,6 +13,11 @@ datos para encontrar la solución más eficiente.
 
 ## Programa principal
 El programa principal **ruta_aerea.cpp** es el encargado de la ejecución de todo el proyecto.
+Además en el desarrollo del programa hemos pensado que queda más limpia y clara la imagen si en cada ruta no imprimimos doblemente el avión en un país,
+es decir, siguiendo el guión al completo para ir de España-> Francia->Alemania en Francia se pegarían dos aviones, uno de llegada de España y otro de despegue hacia Alemania
+y nosotros hemos decidido que solo se imprima el avión de salida con la orientacion hacia el país destino, por lo que en Francia solo se imprimiría un avión.
+En el caso de que se quiera imprimir el avión de llegada tal y como se hace en el ejemplo solo sería necesario descomentar un bloque de la línea 37 del programa principal.
+
 > __ruta_aérea__ \<Datos de países\> \<mapa global\> \<directorio banderas\> \<almacén rutas\> \<avión\> \<mascara avión\> \<dir salida imagen\>
 
 @image html Ruta1.png "Salida al seleccionar la ruta 1"

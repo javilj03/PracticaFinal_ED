@@ -4,7 +4,10 @@
 /**
  * @file Paises.cpp
  * @brief Implementación de la clase Paises.
+ * @author Javier Lama Jiménez
+ * @author Iván Rodríguez Chacón
  */
+
 
 using namespace std;
 

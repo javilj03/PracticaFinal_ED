@@ -2,6 +2,12 @@
 #include <fstream>
 #include "AlmacenRuta.h"
 #include "Ruta.h"
+/**
+ * @file pruebaAlmacenRuta.cpp
+ * @brief Fichero de prueba de la clase AlmacenRuta.
+ * @author Javier Lama Jiménez
+ * @author Iván Rodríguez Chacón
+ */
 
 int main() {
    // Crear un objeto AlmacenRutas
